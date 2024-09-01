@@ -1,6 +1,8 @@
 # Prologue
 
-単段 / 多段式ハイブリッドロケットの軌道シミュレーターです。
+単段 / 多段式ハイブリッドロケットの軌道シミュレーターです.
+
+numpy, pandas, numpy-quaternionのinstallが必須です.
 
 ## memo
 
