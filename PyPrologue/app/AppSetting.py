@@ -78,7 +78,7 @@ class _AppSetting:
         cls._instance = super(_AppSetting, cls).__new__(cls)
         self = cls._instance
         
-        ### ここは一度だけ実行 ###
+        ### ここは一度だけ実行される ###
         
         self.__processing = _AppSetting.Processing(
             multiThread=self.__InitValue("processing", "multi_thread"), # type: ignore

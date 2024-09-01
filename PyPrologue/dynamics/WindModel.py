@@ -59,7 +59,7 @@ class WindModel :
             df = pd.read_csv("input/wind/" + AppSetting.windModel.realdataFileName)
             df = df.sort_values(by=df.colmuns[0]) # sort by geopotential_height
             for idx, windData in df.iterrows():
-                np.append(self.__windData, 
+                self.__windData = np.append(self.__windData, 
                     WindData(height=windData[0], speed=windData[1], direction=windData[2]-magneticDeclination)) # type: ignore
         else:
             self.__groundWindSpeed = groundwindSpeed
