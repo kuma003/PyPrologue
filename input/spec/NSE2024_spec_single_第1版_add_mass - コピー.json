@@ -1,0 +1,28 @@
+{
+  "rocket1": {
+    "ref_len": 1.1177,
+    "diam": 0.102,
+    "mass_i": 4.903439,
+    "mass_f": 4.521,
+    "CGlen_i": 0.5869,
+    "CGlen_f": 0.5809,
+    "Iyz_i": 0.4001,
+    "Iyz_f": 0.3965,
+    "CPlen": 0.7460825529,
+    "Cd_i": 0.3291353568,
+    "Cd_f": 0.3291353568,
+    "Cna": 6.537976962,
+    "Cmq": -3.0,
+    "motor_file": "F.T.E._I260_20240609_Prolougue.txt",
+    "vel_1st": 12.5,
+    "op_type_1st": 0,
+    "delay_time_1st": 0
+  },
+
+  "environment": {
+    "place": "nosiro_land",
+    "rail_len": 5.0,
+    "rail_azi": 220,
+    "rail_elev": 87
+  }
+}

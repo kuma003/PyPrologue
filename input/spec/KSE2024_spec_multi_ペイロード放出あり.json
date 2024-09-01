@@ -1,0 +1,61 @@
+{
+  "rocket1": {
+    "ref_len": 1.496,
+    "diam": 0.142,
+    "mass_i": 6.834,
+    "mass_f": 6.482,
+    "CGlen_i": 0.7551,
+    "CGlen_f": 0.7345,
+    "Iyz_i": 1.053,
+    "Iyz_f": 1.018,
+    "CPlen": 0.9464918478,
+    "Cd_i": 0.1879444486,
+    "Cd_f": 0.1879444486,
+    "Cna": 11.16967272,
+    "Cmq": 0,
+    "motor_file": "KSE2024_J250_2hann.txt"
+  },
+  "rocket2": {
+    "ref_len": 1.496,
+    "diam": 0.142,
+    "mass_i": 5.307,
+    "mass_f": 5.307,
+    "CGlen_i": 0.7950,
+    "CGlen_f": 0.7950,
+    "Iyz_i": 0.8205,
+    "Iyz_f": 0.8205,
+    "CPlen": 0.9464918478,
+    "Cd_i": 0.1879444486,
+    "Cd_f": 0.1879444486,
+    "Cna": 11.16967272,
+    "Cmq": -0.061415598,
+    "vel_1st": 10,
+    "op_type_1st": 0,
+    "delay_time_1st": 2
+  },
+  "rocket3": {
+    "ref_len": 0.1535,
+    "diam": 0.1105811584,
+    "mass_i": 1,
+    "mass_f": 1,
+    "CGlen_i": 0.0885,
+    "CGlen_f": 0.0885,
+    "Iyz_i": 0.002456,
+    "Iyz_f": 0.002456,
+    "CPlen": 0.476,
+    "Cd_i": 0.96,
+    "Cd_f": 0.96,
+    "Cna": 3.379,
+    "Cmq": -3.0,
+    "vel_1st": 10,
+    "op_type_1st": 1,
+    "delay_time_1st": 100,
+    "motor_file": "payload.txt"
+  },
+  "environment": {
+    "place": "izu_land",
+    "rail_len": 5.0,
+    "rail_azi": 315,
+    "rail_elev": 89
+  }
+}
