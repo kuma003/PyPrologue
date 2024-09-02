@@ -26,7 +26,7 @@ class _AppSetting:
     __processing : Processing
     
     @property
-    def processing(self) : return self.__processing
+    def processing(self)  -> Processing: return self.__processing
     
     @dataclass
     class Simulation:
@@ -39,7 +39,7 @@ class _AppSetting:
     __simulation : Simulation
     
     @property
-    def simulation(self) : return self.__simulation
+    def simulation(self)  -> Simulation: return self.__simulation
     
     @dataclass
     class Result:
@@ -48,7 +48,7 @@ class _AppSetting:
     __result : Result
     
     @property
-    def result(self) : return self.__result
+    def result(self)  -> Result: return self.__result
 
     @dataclass
     class WindModel:
@@ -59,7 +59,7 @@ class _AppSetting:
     __windModel : WindModel
     
     @property
-    def windModel(self) : return self.__windModel
+    def windModel(self)  -> WindModel: return self.__windModel
     
     @dataclass
     class Atmoshere:
@@ -140,8 +140,8 @@ class _AppSetting:
             basePressure    = self.__InitValue("atmosphere", "base_pressure_pascal"), # type: ignore
             baseTemperature = self.__InitValue("atmosphere", "base_temperature_celsius") # type: ignore
         )
+        
         return cls._instance
-    
     
     def __InitValue(self, *keys : str):
         if self.__json_dict == {}:
