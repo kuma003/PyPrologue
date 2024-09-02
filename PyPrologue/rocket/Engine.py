@@ -22,7 +22,7 @@ class Engine:
     def loadThrustData(self, filepath : Path):
         if not filepath.exists: return False
         
-        df = pd.read_csv(filepath, header=None, sep=None, engine="python")
+        df = pd.read_csv("input/thrust" / filepath, header=None, sep=None, engine="python")
         df = df.sort_values(df.columns[0])
         
         self.__thrustData = df.apply(lambda row : ThrustData(row[0], row[1]), axis=1) # type: ignore

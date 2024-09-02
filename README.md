@@ -15,3 +15,5 @@ conda install -c conda-forge quaternion
     __degPerLen_latitude, __degPerLen_longitudeの計算が怪しい.
 2. Appsettings.py  
     ムリにSingletonにしなくてよかった気がする (可読性が低い). 
+3. RocketSpec.py
+    終端速度とCd値の計算式が気になる.
