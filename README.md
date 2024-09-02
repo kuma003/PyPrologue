@@ -3,7 +3,11 @@
 単段 / 多段式ハイブリッドロケットの軌道シミュレーターです.
 
 numpy, pandas, numpy-quaternionのinstallが必須です.  
-conda installではインストールできないので, pipコマンドでインストールしてください.
+~conda installではインストールできないので, pipコマンドでインストールしてください.~  
+嘘でした. ↓を実行すればインストールできました (参考 : [公式ドキュメント](https://quaternion.readthedocs.io/en/latest/)).
+```
+conda install -c conda-forge quaternion
+```
 
 ## memo
 
