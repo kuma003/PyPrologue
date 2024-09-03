@@ -63,7 +63,7 @@ class RocketSpecification:
         self.__existInfCd = False
         
         isMultipleRocket : bool = self.isMultipleRocket(specJson_dict)
-        self.__setBodySpecification(specJson_dict=specJson_dict, index=i0) # 第一段階目
+        self.__setBodySpecification(specJson_dict=specJson_dict, index=0) # 第一段階目
         idx : int = 1
         while isMultipleRocket and idx < __availableBodyCount:
             self.__setBodySpecification(specJson_dict=specJson_dict, index=idx)
