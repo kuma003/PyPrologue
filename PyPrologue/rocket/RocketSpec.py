@@ -76,13 +76,11 @@ class RocketSpecification:
         return
 
     def isMultipleRocket(self, specJson_dict : dict):
-        pass
-    
+        return __bodyList[1] in specJson_dict    
     
     @property
     def bodyCount(self) -> int:
         return len(self.__bodySpecs)
-    
     
     def bodySpec(self, bodyIndex : int):
         return self.__bodySpecs[bodyIndex] if 0 < bodyIndex < self.bodyCount else None
@@ -114,7 +112,7 @@ class RocketSpecification:
                 openingTime=GetValue(specJson_dict, "key", "op_time_1st"),
                 openingHeight=GetValue(specJson_dict, "key", "delay_time_1st")
         )])
-        if (spec.parachutes[0].terminalVelocity <= 0):
+        if spec.parachutes[0].terminalVelocity <= 0:
             self.__existInfCd = True
             PrintInfo(PrintInfoType.Warning, 
                 f"Rocket:{key}",
@@ -125,17 +123,41 @@ class RocketSpecification:
         
         # initialize Engine
         spec.engine.loadThrustData(GetValue(specJson_dict, key, "moter_file"))
+        if "thrust_measured_pressure" in specJson_dict[key]:
+            spec.engine.thrustMeasuredPressure = specJson_dict[key]["thrust_measured_pressure"]
+        if "engine_nozzle_diameter" in specJson_dict[key]:
+            spec.engine.nozzleDiameter = specJson_dict[key]["engine_nozzle_diameter"]
         
-        
-        
+        spec.aeroCoeffStorage.init_by_CSV(GetValue(specJson_dict, key, "aero_coef_file"))
+        if spec.aeroCoeffStorage.isTimeSeriesSpec:
+            PrintInfo(PrintInfoType.Information, f"Rocket: {key}", "Aero coefficients are set from CSV")
+        else:
+            PrintInfo(PrintInfoType.Information, f"Rocket: {key}", "Aero coefficients are set from JSON")
+            spec.aeroCoeffStorage.init_by_JSON(GetValue(specJson_dict, key, "CPlen"),
+                                               GetValue(specJson_dict, key, "CP_alpha"),
+                                               GetValue(specJson_dict, key, "Cd_i"),
+                                               GetValue(specJson_dict, key, "Cd_f"),
+                                               GetValue(specJson_dict, key, "Cd_alpha2"),
+                                               GetValue(specJson_dict, key, "Cna"))
         self.__bodySpecs = np.append(self.__bodySpecs, spec)
         
+        try:
+            for child in specJson_dict[key]["transitions"]:
+                spec.transitions = np.append(spec.transitions, Transition(time=GetValue(child, "time"),
+                                                                                     mass=GetValue(child, "mass"),
+                                                                                     Cd=GetValue(child, "Cd")))
+        except:
+            pass # 空実装
         
-        
+        self.bodySpec = np.append(self.bodySpec, spec)
     
-    def __setInfParachuteCd():
-        pass
-    
+    def __setInfParachuteCd(self):
+        # memo: 
+        #  Pythoではミュータブルオブジェクト(変更可能)ならfor文は参照渡しとして機能する
+        for spec in self.__bodySpecs:
+            if spec.parachutes[0].Cd == 0:
+                for _spec in reversed(self.bodySpec):
+                    spec.parachutes[0].Cd = spec.parachutes[0].Cd + _spec.parachutes[0].Cd    
 
 def __calcPrachuteCd(massFinal : float, termianlVelocity : float):
     return massFinal * Constant.G / (0.5 * 1.25 * termianlVelocity ** 2)

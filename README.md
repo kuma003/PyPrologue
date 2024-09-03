@@ -15,5 +15,8 @@ conda install -c conda-forge quaternion
     __degPerLen_latitude, __degPerLen_longitudeの計算が怪しい.
 2. Appsettings.py  
     ムリにSingletonにしなくてよかった気がする (可読性が低い). 
-3. RocketSpec.py
+3. RocketSpec.py  
     終端速度とCd値の計算式が気になる.
+4. RocketSpec.py
+    ```setInfParachuteCd```関数の意図がよくわからない. ChatGPTとも相談したけど抗力係数0のときに初期化したいこと以外の意図不明.  
+    本当は自身よりも上のステージの抗力係数だけ足したかった? それならまだ分かるが逆順で足しているのは何故? 

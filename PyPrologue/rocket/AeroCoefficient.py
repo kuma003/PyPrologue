@@ -28,9 +28,9 @@ class AeroCoefficientStrage:
     __isTimeSeries : bool = False
     
     @property
-    def isTimeSeries(self): return self.__isTimeSeries
+    def isTimeSeriesSpec(self): return self.__isTimeSeries
     
-    def init_by_parameter(self, Cp : float, Cp_a : float, Cd_i : float, Cd_f : float, Cd_a2 : float, Cna : float):
+    def init_by_JSON(self, Cp : float, Cp_a : float, Cd_i : float, Cd_f : float, Cd_a2 : float, Cna : float):
         self.__aeroCoefSpec = np.array([AeroCoefSpec(
             airspeed=0, Cp=Cp, Cp_a=Cp_a, Cd_i=Cd_i, Cd_f=Cd_f, Cd_a2=Cd_a2, Cna=Cna
         )]) # type: ignore # 
@@ -38,7 +38,7 @@ class AeroCoefficientStrage:
     def setConstant(self, Cp : float, Cd : float, Cna : float):
         self.__constant = AeroCoefficient(Cp=Cp, Cd=Cd, Cna=Cna)
     
-    def init_by_csvfile(self, filepath : Path):
+    def init_by_CSV(self, filepath : Path):
         if not isinstance(filepath, Path): filepath = Path(filepath)
         if not filepath.exists() or filepath.suffix != ".csv":
             return
