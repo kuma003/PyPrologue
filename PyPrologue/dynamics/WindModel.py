@@ -57,7 +57,7 @@ class WindModel :
         '''
         if AppSetting.windModel.type == WindModelType.Real:
             df = pd.read_csv("input/wind/" + AppSetting.windModel.realdataFileName)
-            df = df.sort_values(by=df.colmuns[0]) # sort by geopotential_height
+            df = df.sort_values(by=df.columns[0]) # sort by geopotential_height
             for idx, windData in df.iterrows():
                 self.__windData = np.append(self.__windData, 
                     WindData(height=windData[0], speed=windData[1], direction=windData[2]-magneticDeclination)) # type: ignore
@@ -123,7 +123,7 @@ class WindModel :
     def __getTemperature(self) -> float:
         '''Formula from: https://pigeon-poppo.com/standard-atmosphere/#i-3'''
         geopotentialHeight = self.geopotentialHeight
-        for thresold, layer in zip(_layerTHresholds[1:], __layers):
+        for thresold, layer in zip(_layerThresholds[1:], _layers):
             if (geopotentialHeight < thresold):
                 return layer.baseTemperature + layer.lapseRate * geopotentialHeight
         
@@ -139,7 +139,7 @@ class WindModel :
         はじめに記載した参考文献はおそらく間違っている  
         https://pigeon-poppo.com/standard-atmosphere/#i-4'''
         geopotentialHeight = self.geopotentialHeight
-        for thresold, layer in zip(_layerTHresholds[1:], __layers):
+        for thresold, layer in zip(_layerThresholds[1:], _layers):
             if (geopotentialHeight < thresold):
                 k : float = layer.lapseRate * self.__height
                 return layer.basePressure * pow(k / (self.temperature - Constant.AbsoluteZero - k), 5.257)
@@ -157,12 +157,12 @@ class WindModel :
     def __getWindFromData(self):
         idx = 0
         for data in self.__windData:
-            if data.height > self.__height:
+            if data.height < self.__height:
                 idx = idx+1
             else: break
         if idx == 0:
             return np.array([0, 0, 0])
-        
+        if idx == len(self.__windData) : idx = idx-1
         windData1 = self.__windData[idx-1]
         windData2 = self.__windData[idx]
         
@@ -185,13 +185,13 @@ class WindModel :
             deltaDirection = self.__height / wind.EkmanLayerLimit * self.__directionInterval
             rad = np.radians(self.__groundWindDirection + deltaDirection)
             __wind = -np.array([np.sin(rad), np.cos(rad), 0]) * self.__groundWindSpeed
-            return __applyPowerLaw(height=self.__height, wind=__wind)
+            return _applyPowerLaw(height=self.__height, wind=__wind)
         
         elif self.__height < wind.EkmanLayerLimit:
             deltaDirection = self.__height / wind.EkmanLayerLimit * self.__directionInterval
             rad = np.radians(self.__groundWindDirection + deltaDirection)
             
-            borderWindSpeed = __applyPowerLaw(self.__height, self.__groundWindSpeed)
+            borderWindSpeed = _applyPowerLaw(self.__height, self.__groundWindSpeed)
             
             k = (self.__height - wind.surfaceLayerLimit) / (wind.surfaceLayerLimit + np.sqrt(2))
             u = wind.geostrophicWind * (1 - np.exp(-k) * np.cos(k))
@@ -211,7 +211,7 @@ class WindModel :
         if self.__height <= 0:
             return groundWind
         else:
-            return __applyPowerLaw(height=self.__height,wind=groundWind)
+            return _applyPowerLaw(height=self.__height,wind=groundWind)
             
             
 @dataclass
@@ -227,10 +227,10 @@ class __Layer :
 # 11000 ~ 20000 [m]: Tropopause
 # 20000 ~ 32000 [m]: Stratosphere
 # 32000 ~ [m]      : Undefined and an error will occur if the altitude exceeds this
-_layerTHresholds = [0, 11000, 20000, 32000]
+_layerThresholds = [0, 11000, 20000, 32000]
 
 # 各層におけるパラメータ
-__layers = [
+_layers = [
     __Layer(
         baseTemperature=AppSetting.atmosphere.baseTemperature,
         lapseRate=-6.5e-3,
@@ -246,7 +246,7 @@ class __Wind:
     EkmanLayerLimit     = 1000  # エクマン層 300 ~ 1000 [m]
 wind : __Wind = __Wind()
 
-def __applyPowerLaw(height: float, windSpeed: float | None = None, wind: np.ndarray | None = None,  ):
+def _applyPowerLaw(height: float, windSpeed: float | None = None, wind: np.ndarray | None = None,  ):
     multiplier = pow(height / AppSetting.windModel.powerLawBaseAlatitude, 1.0 / AppSetting.windModel.powerConstant)
     
     if   (windSpeed is not None and wind is not None):

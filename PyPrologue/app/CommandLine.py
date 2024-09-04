@@ -15,9 +15,13 @@ def Question(question : str, *choices : str) -> None:
     '''
     print("<!==", question, "===!>")
     for choice, i in zip(choices, range(len(choices))):
-        print(i+1, ": ", choice, sep="")    
+        print(i+1, ": ", choice, sep="")
 
 def InputIndex(size: int):
+    '''数字入力関数.
+    Args:
+        size: 入力できる数の上限 (下限は0).
+    '''
     var = -1
     while not(isinstance(var, int) and 0 < var <= size):
         input_str = input("")
@@ -25,8 +29,14 @@ def InputIndex(size: int):
             var = int(input_str)
         except ValueError or EOFError:
             var = -1
+    print("")
 
 def PrintInfo(type : PrintInfoType, *lines : str):
+    '''文字列出力関数.
+    Args:
+        type: 情報のタイプ.
+        line: 出力する文字. それぞれ改行して出力される.
+    '''
     # 最初の文字を出力
     match(type):
         case PrintInfoType.Information:
@@ -43,3 +53,4 @@ def PrintInfo(type : PrintInfoType, *lines : str):
             print(line, sep="")
         else:            
             print("   ", line, sep="")
+    print("")

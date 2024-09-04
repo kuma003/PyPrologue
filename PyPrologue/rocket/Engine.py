@@ -20,15 +20,18 @@ class Engine:
     __exist : bool = False
     
     def loadThrustData(self, filepath : Path):
-        if not filepath.exists: return False
+        if not isinstance(filepath, Path): filepath = Path(filepath)
+        filepath = "input/thrust"/filepath
+        if not filepath.is_file(): return False
+        print(filepath)
         
-        df = pd.read_csv("input/thrust" / filepath, header=None, sep=None, engine="python")
+        df = pd.read_csv(filepath, header=None, sep=None, engine="python")
         df = df.sort_values(df.columns[0])
         
         self.__thrustData = df.apply(lambda row : ThrustData(row[0], row[1]), axis=1) # type: ignore
         
         if self.__thrustData[0].time != 0:
-            self.__thrustData = np.insert(self.__thrustData, ThrustData(0, 0)) # type: ignore
+            self.__thrustData = np.insert(self.__thrustData, 0, ThrustData(0, 0)) # type: ignore
         
         self.__exist = True
         return True        
