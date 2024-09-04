@@ -21,9 +21,13 @@ conda install geopandas
 conda install plotly
 conda install -c conda-forge python-kaleido
 ```
-Colaboratory環境下では上3要件は自動的に満たされているので，次を実行してnumpy-quaternionをインストールしてください :
-```{Python}
+Colaboratory環境下では次を実行してインストールしてください :
+```Python
 !pip install numpy-quaternion
+!pip install -U kaleido
+# ついでに日本語に対応させる (参考:https://qiita.com/siraasagi/items/3836cedede350280ec42)
+!apt-get -y install fonts-ipafont-gothic
+!rm /root/.cache/matplotlib/fontlist-v300.json
 ```
 
 ## 使い方
