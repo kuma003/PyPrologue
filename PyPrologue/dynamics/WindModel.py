@@ -25,25 +25,19 @@ class WindData:
     height : float = 0
     speed : float = 0
     direction : float = 0
-    
-    def __eq__(self, other: object) -> bool:
-        if not isinstance(other, WindData): return NotImplemented
-        return self.height == other.height and self.speed == other.speed and self.direction == other.direction
 
 class WindModel :
-    __windData = np.array([])
-    __groundWindSpeed : float     = 0
-    __groundWindDirection : float = 0
-    __directionInterval : float   = 0
-    __height : float              = 0
-    __geopotentialHeight          = 0
-    __airDensity : float          = 0
-    __gravity : float             = 0
-    __pressure : float            = 0
-    __temperature : float         = 0
-    __wind = np.array([])
-    
-   
+    _windData = np.array([])
+    _groundWindSpeed : float     = 0
+    _groundWindDirection : float = 0
+    _directionInterval : float   = 0
+    _height : float              = 0
+    _geopotentialHeight          = 0
+    _airDensity : float          = 0
+    _gravity : float             = 0
+    _pressure : float            = 0
+    _temperature : float         = 0
+    _wind = np.array([])
     
     def __init__(self, 
                   magneticDeclination : float, groundwindSpeed : float = 0, groundWindDirection : float = 0):
@@ -59,12 +53,12 @@ class WindModel :
             df = pd.read_csv("input/wind/" + AppSetting.windModel.realdataFileName)
             df = df.sort_values(by=df.columns[0]) # sort by geopotential_height
             for idx, windData in df.iterrows():
-                self.__windData = np.append(self.__windData, 
+                self._windData = np.append(self._windData, 
                     WindData(height=windData[0], speed=windData[1], direction=windData[2]-magneticDeclination)) # type: ignore
         else:
-            self.__groundWindSpeed = groundwindSpeed
-            self.__groundWindDirection = (groundWindDirection - magneticDeclination) % 360
-            self.__directionInterval = 270 - self.__groundWindDirection if self.__directionInterval > 45.0 else 270 - self.__groundWindDirection + 360
+            self._groundWindSpeed = groundwindSpeed
+            self._groundWindDirection = (groundWindDirection - magneticDeclination) % 360
+            self._directionInterval = 270 - self._groundWindDirection if self._directionInterval > 45.0 else 270 - self._groundWindDirection + 360
         
         
     
@@ -76,33 +70,33 @@ class WindModel :
             Returns:
                 None    
         '''
-        self.__height = height
+        self._height = height
         # この順番で計算しないと値が上手く更新されないので注意
-        self.__geopotentialHeight = self.__getGeopotentialHeight()
-        self.__gravity = self.__getGravity()
-        self.__temperature = self.__getTemperature()
-        self.__pressure = self.__getPressure()
-        self.__airDensity = self.__getAirDensity()
+        self._geopotentialHeight = self.__getGeopotentialHeight()
+        self._gravity = self.__getGravity()
+        self._temperature = self.__getTemperature()
+        self._pressure = self.__getPressure()
+        self._airDensity = self.__getAirDensity()
         
         match AppSetting.windModel.type:
             case WindModelType.Real:
-                self.__wind = self.__getWindFromData()
+                self._wind = self.__getWindFromData()
             case WindModelType.Original:
-                self.__wind = self.__getWindOriginalModel()
+                self._wind = self.__getWindOriginalModel()
             case WindModelType.OnlyPowerLaw:
-                self.__wind = self.__getWindOnlyPowerLaw()
+                self._wind = self.__getWindOnlyPowerLaw()
             case _: # NoWind or exception
                 m_wind = -np.array([0.0, 0.0, 0.0])
 
     @property
     def geopotentialHeight(self) -> float:
-        return self.__geopotentialHeight
+        return self._geopotentialHeight
     
     def __getGeopotentialHeight(self):
         '''Geopotential Height:  
         https://ja.wikipedia.org/wiki/%E3%82%B8%E3%82%AA%E3%83%9D%E3%83%86%E3%83%B3%E3%82%B7%E3%83%A3%E3%83%AB  
         Formula from: https://pigeon-poppo.com/standard-atmosphere/#i-2'''
-        return Constant.EarthRadius * self.__height / (Constant.EarthRadius + self.__height)
+        return Constant.EarthRadius * self._height / (Constant.EarthRadius + self._height)
     
     @property
     def gravity(self) -> float:
@@ -110,15 +104,15 @@ class WindModel :
     
     def __getGravity(self) -> float:
         '''Formula from: https://ja.wikipedia.org/wiki/%E5%9C%B0%E7%90%83%E3%81%AE%E9%87%8D%E5%8A%9B#%E9%AB%98%E5%BA%A6'''
-        return Constant.G * (Constant.EarthRadius / (Constant.EarthRadius + self.__height))**2
+        return Constant.G * (Constant.EarthRadius / (Constant.EarthRadius + self._height))**2
     
     @property
     def wind(self):
-        return self.__wind
+        return self._wind
         
     @property
     def temperature(self) -> float:
-        return self.__temperature
+        return self._temperature
     
     def __getTemperature(self) -> float:
         '''Formula from: https://pigeon-poppo.com/standard-atmosphere/#i-3'''
@@ -127,12 +121,12 @@ class WindModel :
             if (geopotentialHeight < thresold):
                 return layer.baseTemperature + layer.lapseRate * geopotentialHeight
         
-        raise ValueError(f"Current height is {self.__height} m. "
+        raise ValueError(f"Current height is {self._height} m. "
                 + "Wind model is not defined above 32000 m.")
     
     @property
     def pressure(self):
-        return self.__pressure
+        return self._pressure
     
     def __getPressure(self)->float:
         '''Formula from: https://keisan.casio.jp/exec/system/1203469826  
@@ -141,59 +135,59 @@ class WindModel :
         geopotentialHeight = self.geopotentialHeight
         for thresold, layer in zip(_layerThresholds[1:], _layers):
             if (geopotentialHeight < thresold):
-                k : float = layer.lapseRate * self.__height
+                k : float = layer.lapseRate * self._height
                 return layer.basePressure * pow(k / (self.temperature - Constant.AbsoluteZero - k), 5.257)
             
-        raise ValueError(f"Current height is {self.__height} m. "
+        raise ValueError(f"Current height is {self._height} m. "
                 + "Wind model is not defined above 32000 m.")
     
     @property
     def density(self) -> float:
-        return self.__airDensity
+        return self._airDensity
     
     def __getAirDensity(self) -> float:
         return self.pressure / (self.temperature - Constant.AbsoluteZero) * Constant.GasConstant
     
     def __getWindFromData(self):
         idx = 0
-        for data in self.__windData:
-            if data.height < self.__height:
+        for data in self._windData:
+            if data.height < self._height:
                 idx = idx+1
             else: break
         if idx == 0:
             return np.array([0, 0, 0])
-        if idx == len(self.__windData) : idx = idx-1
-        windData1 = self.__windData[idx-1]
-        windData2 = self.__windData[idx]
+        if idx == len(self._windData) : idx = idx-1
+        windData1 = self._windData[idx-1]
+        windData2 = self._windData[idx]
         
         windSpeed =\
-            np.interp(self.__height, [windData1.height, windData2.height], [windData1.speed, windData2.speed])
+            np.interp(self._height, [windData1.height, windData2.height], [windData1.speed, windData2.speed])
         direction =\
-            np.interp(self.__height, [windData1.height, windData2.height], [windData1.direction, windData2.direction])
+            np.interp(self._height, [windData1.height, windData2.height], [windData1.direction, windData2.direction])
         
         rad = np.radians(direction)
         
         return -np.array([np.sin(rad), np.cos(rad), 0]) * windSpeed
     
     def __getWindOriginalModel(self):
-        if self.__height <= 0:
-            rad = np.radians(self.__groundWindDirection)
-            groundWind = -np.array([np.sin(rad), np.cos(rad), 0]) * self.__groundWindSpeed
+        if self._height <= 0:
+            rad = np.radians(self._groundWindDirection)
+            groundWind = -np.array([np.sin(rad), np.cos(rad), 0]) * self._groundWindSpeed
             return groundWind
         
-        elif self.__height < wind.surfaceLayerLimit: # 接地境界層
-            deltaDirection = self.__height / wind.EkmanLayerLimit * self.__directionInterval
-            rad = np.radians(self.__groundWindDirection + deltaDirection)
-            __wind = -np.array([np.sin(rad), np.cos(rad), 0]) * self.__groundWindSpeed
-            return _applyPowerLaw(height=self.__height, wind=__wind)
+        elif self._height < wind.surfaceLayerLimit: # 接地境界層
+            deltaDirection = self._height / wind.EkmanLayerLimit * self._directionInterval
+            rad = np.radians(self._groundWindDirection + deltaDirection)
+            __wind = -np.array([np.sin(rad), np.cos(rad), 0]) * self._groundWindSpeed
+            return _applyPowerLaw(height=self._height, wind=__wind)
         
-        elif self.__height < wind.EkmanLayerLimit:
-            deltaDirection = self.__height / wind.EkmanLayerLimit * self.__directionInterval
-            rad = np.radians(self.__groundWindDirection + deltaDirection)
+        elif self._height < wind.EkmanLayerLimit:
+            deltaDirection = self._height / wind.EkmanLayerLimit * self._directionInterval
+            rad = np.radians(self._groundWindDirection + deltaDirection)
             
-            borderWindSpeed = _applyPowerLaw(self.__height, self.__groundWindSpeed)
+            borderWindSpeed = _applyPowerLaw(self._height, self._groundWindSpeed)
             
-            k = (self.__height - wind.surfaceLayerLimit) / (wind.surfaceLayerLimit + np.sqrt(2))
+            k = (self._height - wind.surfaceLayerLimit) / (wind.surfaceLayerLimit + np.sqrt(2))
             u = wind.geostrophicWind * (1 - np.exp(-k) * np.cos(k))
             v = wind.geostrophicWind * (1 - np.exp(-k) * np.sin(k))
             
@@ -206,12 +200,12 @@ class WindModel :
             return -np.array([wind.geostrophicWind, 0, 0])
     
     def __getWindOnlyPowerLaw(self):
-        rad = np.radians(self.__groundWindDirection)
-        groundWind = -np.array([np.sin(rad), np.cos(rad), 0]) * self.__groundWindSpeed
-        if self.__height <= 0:
+        rad = np.radians(self._groundWindDirection)
+        groundWind = -np.array([np.sin(rad), np.cos(rad), 0]) * self._groundWindSpeed
+        if self._height <= 0:
             return groundWind
         else:
-            return _applyPowerLaw(height=self.__height,wind=groundWind)
+            return _applyPowerLaw(height=self._height,wind=groundWind)
             
             
 @dataclass
