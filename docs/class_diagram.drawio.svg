@@ -1,0 +1,525 @@
+<svg host="65bd71144e" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="749px" height="726px" viewBox="-0.5 -0.5 749 726" content="&lt;mxfile&gt;&lt;diagram id=&quot;cs_BYDKQZRly-dVLLSKe&quot; name=&quot;ページ1&quot;&gt;7Z1bb9s4FoB/yz4YaBdIIOriy2PiTNoB2m4wKbazTwFj0TY3sqil6DieX7+kROpiUYlS0dwuQKBIxaskfuTR4eEhPQmWu5dPFGbbryRGycT34pdJcDPx/YUX8L8i4igjFjJiQ3FcRoE64h7/hWSkJ2P3OEZ5KyMjJGE4a0euSJqiFWvFQUrJoZ1tTZL2XTO4QZ2I+xVMurE/cMy2Zezcn9XxnxHebNWdwXRRpuygyizfJN/CmBwaUcFvk2BJCWHl1e5liRLRdqpdynK3PanVg1GUsiEF/LAs8QyTvXy5h6ssu0eM4XQjn5Ed1YvnB7xLYMpD12uSsnuZ4vHwaouT+As8kr24cc7g6kmFrreE4r94fpjwJMAjeDJlkqs/FbXhJFmShFAekZLiBnWhe1GZvA1FOS92p14QnER9hS+tjF9gztQDkiSBWY4fi0cWBXeQbnB6TRgjO5mp236ySZ8RZeilESXb8xMiO8TokWeRqXOJVvbtUAYPdUep4raNThJGMhLKzrmpaq758QuJsAdn1MF5wYMPGSUrlOcc6eVuz8fJ9y1FMOYpk+CK/33kg2ey9CdXXoc4f2lWAKPkCZ0Q0kCDCd6kPJigtSgmWg3zcXMloxnJRGUZXPFH+VLkuQnrmD9kc4gowsuuk2JsbHEco1QwJQwy+Fj1uYzglBXNFV3zf/zpl95lNIn4gy95GNRh/k9kp2xJUv4uEBd4Ee8dByR6iAZ8NTTeJi9R8548CLWqeRTp6ZukWQF5Sfb8jRxpo6SjgYNaURpFeq4nnWM+lCHDJL2Ma8C8ISFzbEewnVkcxbPu57fDFjGuwtwh+CSEdr4VuoqDbQo28IaOZBO0e77ODdoHnMb3GULxV5w6zOYwqyJWMM/egVnoq46xEcbh3CLjHvXrhPENpr+nDFGezY1mc6Rnvj3S80BPmn+L+UzqMqNohXPOu+IrXtnRHUF3YVEBm/uv0s0Zyu7hM+oMYgd55FTZt6h3zYEespDQhW3yMiMHRIv3hambSxnEHFrUu5Th7Q3MX+DhGuboKmGY7WPkaBu0f1nUwOY9U+eaNkUwiXl73eIEfYO7mjRvAMd5DOeFTf2rZ9IM2Y7kW0TR5SMfzXf8g53vqRvN5igHwKYe1jOfgowIzFkF+jvaZYhC5lgbZT10lcoI6x77yL9zkj7EeFUrYGXAcf15rlOL+hfwup/kDr0EF1RKemrxnL/B9Zbt6tXhJtoYrSGfi5lqkflAHUX5Goxrke7MY+Jfi87+kKLDw8OHj1Vfbyy7567PjyG8sKiFVusHp8Ls9xSzf4q4D0/omLc/VTV0mB4d6xGsQyVh3mQ9H8960dVRQIceijdIucUoR5ZasqEXzP6UTSmu/yWueXuVoZuXRtLNUQVS/px/qgpEoFFKBOtiRUiVo2SfxiiWoZNugtL4SjhCCfmK4Y6k8fctTssEPl9qS2IlpoGWmmoDsqcr1SyhxMIg3SCZT1lhRAu9ylaSv/AuZ7Op1P4l7wsgwxQJK/tzG4MOrqz+jhQWO1V3sGg76VR9RlVRPrgsVXcR3mbw2Mgmh0P/faL2fULpoHM7ML/qc3UPLZ9AX7pqHWVJjdovRdbrHLHJaZevmn6gxOtOyH6oOXdnODiHsbc7eqQU4nd6jM2U8Bv3AevRxjeF/PihFirdZKvno1WPB/N+Yga8h4DX4z5U873BFK1YcwnLMR7NOLJoIgPeQs+4mEJLuG4d2jxkm65iAOhnGvI+jqoxqlZ9wgDoWZzklWWE8ffAMPnsGJtmbNMhDABfzxhieoPSHLOjY2uQrU1HMAB6/IM2FD47sGbB2vT7AqBngTlzS43mydr0+QKgZ0mZubXFs0x3bfp6AdCzkiz8Qk6perw5gqJhHN8RfG06eQG/qy938JldZPwpC4/NVUbVAppVRpxi1lhmLHb+fROd1vX4MXhnNjVMv6thlnj3WQwZ+qCzANRLjI72WNqBN1TtNLDICPyuPb6k3TUINLwHnJoyHnMwVE0xgTnoG9RCT+mCdZqKEcTRULltBHHfZ7kxz3BD2Cjf+dBppBFJ3Z1GSkldmn4cW5NsQzB0lmFk7HYXW0q2yvrj4BqFqxyG7Azc7pJ4CTcujfGOrVG2M5t6Vd+5ODlin5wCfV7Qgx1vjYDWmOcfNpyy+/iew5vFpmIV9C6Js+9OdT4T4cimeuX3OCwJn1unYJ0DrzrowM4A7vM5ROyqcnlwgE0CngKr1qs+p2HEhEfpLSW7G95czo51JtiBVTtWj0otYf+D4g1OYeKAnxH41Kr+1eMfoYCnyfFOnqThgJ8J+MKqtWvRoaXZx9beUKbZ1aau37WrrQoM29XW2LhGMtTesSbSY5hvi2d8dbPam3vQxu4vUy4v1YLxSRXlbrnO/rJORad7gzoV9WxU+5mNXaHO5jktnCJQut/t+bQL8YhN2cm5QAqAaPFq8xc7Zt2V5nNsAAsDvcj4n2wAe4cfyWAhoHrRrN2LgjDoCAUQaYQCCGcGpELYt3n9D3R6EppXJKvd7k7ot4bTcAPaQLxG9oUpi3uHrtLntIR9R3gMYfU7EHYI97kYNBU4LeXAUR5DeRHZpKw7dEVQ/kZ+NF1em3xDx3cM38oH1QrgqKuWFbt2eRNZ0bZ+qe32FrUtzTZ8oHfhNeHkGfUpW25/5+vDN3r38NWsZWnBmhm9fWpW7k5VMItVs+P+jFj7dKvYHaZgHq3G3f6MaLtrG3/v4Ps/MI+9dq5T7+eydYqT+iY1T3Gqzot5zzFOoZpRVMc4yZrfZ2Z77+lL0clpSrPFSUfQHqZk9rSkSOdrVhrV+OBMW71q+p+9+N0/oQmJsS+EB908fig0kaWYfDcuPhYUPaHlXazhDifHssBnlDwjIRsa6XmhyIlUALKXZkJ5a5GSEroT6l+V9gwphvx/LmEKd4v8jXwrmPVlOcghKhJDzytTEsQYohdSQnVLEpptYSqr9Ms4ITQvpCgU0SskDjVppHG9uOjRItFTr1qkcNmU5mtev7pTMWZLmVL8HmTjNgdC4/aDVXXxd3l8wrw6UWcpvC+kVGrle+QacXnCzkWHpmSoWC4+Nh4zRitCi98PuWBbvHpKUZ6r+RsWjmv6vA2Qr+ZrPEsrX/mNOmmZGOdZAo8qe7Gpzvf+hndC3otz8gszsOyzyjBc7bUs5ydTqZ3flp1dGY/1H8PDFjN0z9tdRB8ozNpy1ICOH4G2RNDoDDPdd8XELr1pv3ndSYKxkkDqRU4O/HJyoDyLv1wb+sWkQaB83qoTzzVTfl8jD05PixwgD3iw/lXfUpGofxo5+O2/&lt;/diagram&gt;&lt;/mxfile&gt;">
+    <defs>
+        <clipPath id="mx-clip-5-31-232-24-0">
+            <rect x="5" y="31" width="232" height="24"/>
+        </clipPath>
+        <clipPath id="mx-clip-5-55-232-26-0">
+            <rect x="5" y="55" width="232" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-5-81-232-24-0">
+            <rect x="5" y="81" width="232" height="24"/>
+        </clipPath>
+        <clipPath id="mx-clip-5-105-232-24-0">
+            <rect x="5" y="105" width="232" height="24"/>
+        </clipPath>
+        <clipPath id="mx-clip-5-129-232-24-0">
+            <rect x="5" y="129" width="232" height="24"/>
+        </clipPath>
+        <clipPath id="mx-clip-5-153-232-24-0">
+            <rect x="5" y="153" width="232" height="24"/>
+        </clipPath>
+        <clipPath id="mx-clip-5-177-232-24-0">
+            <rect x="5" y="177" width="232" height="24"/>
+        </clipPath>
+        <clipPath id="mx-clip-5-201-232-24-0">
+            <rect x="5" y="201" width="232" height="24"/>
+        </clipPath>
+        <clipPath id="mx-clip-5-225-232-24-0">
+            <rect x="5" y="225" width="232" height="24"/>
+        </clipPath>
+        <clipPath id="mx-clip-5-249-232-24-0">
+            <rect x="5" y="249" width="232" height="24"/>
+        </clipPath>
+        <clipPath id="mx-clip-5-273-232-24-0">
+            <rect x="5" y="273" width="232" height="24"/>
+        </clipPath>
+        <clipPath id="mx-clip-5-297-232-24-0">
+            <rect x="5" y="297" width="232" height="24"/>
+        </clipPath>
+        <clipPath id="mx-clip-5-321-232-24-0">
+            <rect x="5" y="321" width="232" height="24"/>
+        </clipPath>
+        <clipPath id="mx-clip-5-345-232-24-0">
+            <rect x="5" y="345" width="232" height="24"/>
+        </clipPath>
+        <clipPath id="mx-clip-5-369-232-24-0">
+            <rect x="5" y="369" width="232" height="24"/>
+        </clipPath>
+        <clipPath id="mx-clip-5-403-232-24-0">
+            <rect x="5" y="403" width="232" height="24"/>
+        </clipPath>
+        <clipPath id="mx-clip-5-427-232-28-0">
+            <rect x="5" y="427" width="232" height="28"/>
+        </clipPath>
+        <clipPath id="mx-clip-512-31-232-26-0">
+            <rect x="512" y="31" width="232" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-512-57-232-24-0">
+            <rect x="512" y="57" width="232" height="24"/>
+        </clipPath>
+        <clipPath id="mx-clip-512-81-232-24-0">
+            <rect x="512" y="81" width="232" height="24"/>
+        </clipPath>
+        <clipPath id="mx-clip-512-105-232-24-0">
+            <rect x="512" y="105" width="232" height="24"/>
+        </clipPath>
+        <clipPath id="mx-clip-512-129-232-24-0">
+            <rect x="512" y="129" width="232" height="24"/>
+        </clipPath>
+        <clipPath id="mx-clip-512-153-232-24-0">
+            <rect x="512" y="153" width="232" height="24"/>
+        </clipPath>
+        <clipPath id="mx-clip-512-177-232-24-0">
+            <rect x="512" y="177" width="232" height="24"/>
+        </clipPath>
+        <clipPath id="mx-clip-512-201-232-24-0">
+            <rect x="512" y="201" width="232" height="24"/>
+        </clipPath>
+        <clipPath id="mx-clip-512-225-232-24-0">
+            <rect x="512" y="225" width="232" height="24"/>
+        </clipPath>
+        <clipPath id="mx-clip-512-249-232-24-0">
+            <rect x="512" y="249" width="232" height="24"/>
+        </clipPath>
+        <clipPath id="mx-clip-512-283-232-24-0">
+            <rect x="512" y="283" width="232" height="24"/>
+        </clipPath>
+        <clipPath id="mx-clip-512-307-232-28-0">
+            <rect x="512" y="307" width="232" height="28"/>
+        </clipPath>
+        <clipPath id="mx-clip-512-335-232-28-0">
+            <rect x="512" y="335" width="232" height="28"/>
+        </clipPath>
+        <clipPath id="mx-clip-512-363-232-28-0">
+            <rect x="512" y="363" width="232" height="28"/>
+        </clipPath>
+        <clipPath id="mx-clip-512-391-232-28-0">
+            <rect x="512" y="391" width="232" height="28"/>
+        </clipPath>
+        <clipPath id="mx-clip-512-419-232-28-0">
+            <rect x="512" y="419" width="232" height="28"/>
+        </clipPath>
+        <clipPath id="mx-clip-512-447-232-28-0">
+            <rect x="512" y="447" width="232" height="28"/>
+        </clipPath>
+        <clipPath id="mx-clip-512-475-232-28-0">
+            <rect x="512" y="475" width="232" height="28"/>
+        </clipPath>
+        <clipPath id="mx-clip-512-503-232-28-0">
+            <rect x="512" y="503" width="232" height="28"/>
+        </clipPath>
+        <clipPath id="mx-clip-512-531-232-28-0">
+            <rect x="512" y="531" width="232" height="28"/>
+        </clipPath>
+        <clipPath id="mx-clip-512-559-232-28-0">
+            <rect x="512" y="559" width="232" height="28"/>
+        </clipPath>
+        <clipPath id="mx-clip-512-587-232-28-0">
+            <rect x="512" y="587" width="232" height="28"/>
+        </clipPath>
+        <clipPath id="mx-clip-512-615-232-28-0">
+            <rect x="512" y="615" width="232" height="28"/>
+        </clipPath>
+        <clipPath id="mx-clip-512-643-232-28-0">
+            <rect x="512" y="643" width="232" height="28"/>
+        </clipPath>
+        <clipPath id="mx-clip-512-671-232-28-0">
+            <rect x="512" y="671" width="232" height="28"/>
+        </clipPath>
+        <clipPath id="mx-clip-512-699-232-28-0">
+            <rect x="512" y="699" width="232" height="28"/>
+        </clipPath>
+        <clipPath id="mx-clip-295-351-142-26-0">
+            <rect x="295" y="351" width="142" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-295-377-142-26-0">
+            <rect x="295" y="377" width="142" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-295-403-142-26-0">
+            <rect x="295" y="403" width="142" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-295-429-142-26-0">
+            <rect x="295" y="429" width="142" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-295-31-132-26-0">
+            <rect x="295" y="31" width="132" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-295-57-132-26-0">
+            <rect x="295" y="57" width="132" height="26"/>
+        </clipPath>
+        <clipPath id="mx-clip-295-83-132-26-0">
+            <rect x="295" y="83" width="132" height="26"/>
+        </clipPath>
+    </defs>
+    <g>
+        <path d="M 1 26 L 1 0 L 241 0 L 241 26" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <path d="M 1 26 L 1 450 L 241 450 L 241 26" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 1 26 L 241 26" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" text-anchor="middle" font-size="12px">
+            <text x="120.5" y="17.5">
+                _AppSetting
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-5-31-232-24-0)" font-size="12px">
+            <text x="6.5" y="43.5">
+                - _processing.multiThread : bool
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-5-55-232-26-0)" font-size="12px">
+            <text x="6.5" y="67.5">
+                - _processing.threadCount : bool
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-5-81-232-24-0)" font-size="12px">
+            <text x="6.5" y="93.5">
+                - _simulation.dt : float
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-5-105-232-24-0)" font-size="12px">
+            <text x="6.5" y="117.5">
+                - _simulation.detectPeakThreshold : float
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-5-129-232-24-0)" font-size="12px">
+            <text x="6.5" y="141.5">
+                - _simulation.windSpeedMin : float
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-5-153-232-24-0)" font-size="12px">
+            <text x="6.5" y="165.5">
+                - _simulation.windSpeedMax: float
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-5-177-232-24-0)" font-size="12px">
+            <text x="6.5" y="189.5">
+                - _simulation.windDirInterval : float
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-5-201-232-24-0)" font-size="12px">
+            <text x="6.5" y="213.5">
+                - _result.precision : int
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-5-225-232-24-0)" font-size="12px">
+            <text x="6.5" y="237.5">
+                - _result.stepSaveInterval : int
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-5-249-232-24-0)" font-size="12px">
+            <text x="6.5" y="261.5">
+                - _windModel.powerConstant : float
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-5-273-232-24-0)" font-size="12px">
+            <text x="6.5" y="285.5">
+                - _windModel.powerLawBaseAltitude : float
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-5-297-232-24-0)" font-size="12px">
+            <text x="6.5" y="309.5">
+                - _windModel.realdataFileName : str
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-5-321-232-24-0)" font-size="12px">
+            <text x="6.5" y="333.5">
+                - _atmoshere.basePressure : float
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-5-345-232-24-0)" font-size="12px">
+            <text x="6.5" y="357.5">
+                - _atomoshphere.baseTemperature : float
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-5-369-232-24-0)" font-size="12px">
+            <text x="6.5" y="381.5">
+                - _json_dict : dict
+            </text>
+        </g>
+        <path d="M 1 393 L 241 393" fill="none" stroke="rgb(0, 0, 0)" stroke-width="2" stroke-miterlimit="10" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-5-403-232-24-0)" font-size="12px">
+            <text x="6.5" y="415.5">
+                + __new__() : _AppSettings
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-5-427-232-28-0)" font-size="12px">
+            <text x="6.5" y="439.5">
+                - _InitValue(keys : float) : any
+            </text>
+        </g>
+        <path d="M 291 385 L 271 385 L 271 256 L 248.99 256" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 241.99 256 L 245.49 253.94 L 248.99 256 L 245.49 258.06 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 1px; height: 1px; padding-top: 400px; margin-left: 273px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: left;">
+                            <div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: none; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                1
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="273" y="403" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px">
+                    1
+                </text>
+            </switch>
+        </g>
+        <path d="M 508 26 L 508 0 L 748 0 L 748 26" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 508 26 L 508 722 L 748 722 L 748 26" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 508 26 L 748 26" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" text-anchor="middle" font-size="12px">
+            <text x="627.5" y="17.5">
+                WindModel
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-512-31-232-26-0)" font-size="12px">
+            <text x="513.5" y="43.5">
+                - _groundWindSpeed : float
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-512-57-232-24-0)" font-size="12px">
+            <text x="513.5" y="69.5">
+                - _groundWindDirection : float
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-512-81-232-24-0)" font-size="12px">
+            <text x="513.5" y="93.5">
+                - _ directionInterval : float
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-512-105-232-24-0)" font-size="12px">
+            <text x="513.5" y="117.5">
+                - height : float
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-512-129-232-24-0)" font-size="12px">
+            <text x="513.5" y="141.5">
+                - _geopotentialHeight : float
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-512-153-232-24-0)" font-size="12px">
+            <text x="513.5" y="165.5">
+                - _airDensity : float
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-512-177-232-24-0)" font-size="12px">
+            <text x="513.5" y="189.5">
+                - _gravity : float
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-512-201-232-24-0)" font-size="12px">
+            <text x="513.5" y="213.5">
+                - _pressure : float
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-512-225-232-24-0)" font-size="12px">
+            <text x="513.5" y="237.5">
+                - _temperature : float
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-512-249-232-24-0)" font-size="12px">
+            <text x="513.5" y="261.5">
+                - _wind : float [3]
+            </text>
+        </g>
+        <path d="M 508 273 L 748 273" fill="none" stroke="rgb(0, 0, 0)" stroke-width="2" stroke-miterlimit="10" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-512-283-232-24-0)" font-size="12px">
+            <text x="513.5" y="295.5">
+                + __init__() : None
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-512-307-232-28-0)" font-size="12px">
+            <text x="513.5" y="319.5">
+                + update(height : float) : None
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-512-335-232-28-0)" font-size="12px">
+            <text x="513.5" y="347.5">
+                + geopotentialHeight() : float
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-512-363-232-28-0)" font-size="12px">
+            <text x="513.5" y="375.5">
+                + wind() : float [3]
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-512-391-232-28-0)" font-size="12px">
+            <text x="513.5" y="403.5">
+                + temperature() : float
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-512-419-232-28-0)" font-size="12px">
+            <text x="513.5" y="431.5">
+                + gravity() : float
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-512-447-232-28-0)" font-size="12px">
+            <text x="513.5" y="459.5">
+                + pressure() : float
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-512-475-232-28-0)" font-size="12px">
+            <text x="513.5" y="487.5">
+                + density() : float
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-512-503-232-28-0)" font-size="12px">
+            <text x="513.5" y="515.5">
+                - _setGeopotentialHeight() : float
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-512-531-232-28-0)" font-size="12px">
+            <text x="513.5" y="543.5">
+                -_getGravity() : float
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-512-559-232-28-0)" font-size="12px">
+            <text x="513.5" y="571.5">
+                - _getTemperature() : float
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-512-587-232-28-0)" font-size="12px">
+            <text x="513.5" y="599.5">
+                - _getPressure() : float
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-512-615-232-28-0)" font-size="12px">
+            <text x="513.5" y="627.5">
+                - _getAirDensity() : float
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-512-643-232-28-0)" font-size="12px">
+            <text x="513.5" y="655.5">
+                - _getWindFromData() : float [3]
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-512-671-232-28-0)" font-size="12px">
+            <text x="513.5" y="683.5">
+                - _getWindOriginalData() : float [3]
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-512-699-232-28-0)" font-size="12px">
+            <text x="513.5" y="711.5">
+                - _getWindOnlyPowerLaw() : float [3]
+            </text>
+        </g>
+        <path d="M 241 231 L 505.76 231" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="none"/>
+        <path d="M 499.88 234.5 L 506.88 231 L 499.88 227.5" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 291 346 L 291 303 L 441 303 L 441 346" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 291 346 L 291 450 L 441 450 L 441 346" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 291 346 L 441 346" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" text-anchor="middle" font-size="12px">
+            <text x="365.5" y="322">
+                &lt;enumurate&gt;
+            </text>
+            <text x="365.5" y="336">
+                WindModeltype
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-295-351-142-26-0)" font-size="12px">
+            <text x="296.5" y="363.5">
+                + Real : int = 1
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-295-377-142-26-0)" font-size="12px">
+            <text x="296.5" y="389.5">
+                + Original : int = 2
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-295-403-142-26-0)" font-size="12px">
+            <text x="296.5" y="415.5">
+                + OnlyPowerLaw : int = 3
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-295-429-142-26-0)" font-size="12px">
+            <text x="296.5" y="441.5">
+                + NoWind : int = 4
+            </text>
+        </g>
+        <path d="M 291 26 L 291 0 L 431 0 L 431 26" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 291 26 L 291 104 L 431 104 L 431 26" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 291 26 L 431 26" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" text-anchor="middle" font-size="12px">
+            <text x="360.5" y="17.5">
+                WindData
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-295-31-132-26-0)" font-size="12px">
+            <text x="296.5" y="43.5">
+                + height : float
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-295-57-132-26-0)" font-size="12px">
+            <text x="296.5" y="69.5">
+                + speed : float
+            </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-295-83-132-26-0)" font-size="12px">
+            <text x="296.5" y="95.5">
+                + direction : float
+            </text>
+        </g>
+        <path d="M 431 39 L 471 39 L 500.01 39" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 507.01 39 L 503.51 41.06 L 500.01 39 L 503.51 36.94 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 50px; margin-left: 441px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: none; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                *
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="441" y="53" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px" text-anchor="middle">
+                    *
+                </text>
+            </switch>
+        </g>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 68px; height: 1px; padding-top: 19px; margin-left: 433px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: left;">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: none; white-space: normal; overflow-wrap: normal;">
+                                <span style="color: rgb(240, 240, 240); font-family: Helvetica; font-size: 11px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(24, 20, 29); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;">
+                                    - _windData
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="433" y="31" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px">
+                    - _windData
+                </text>
+            </switch>
+        </g>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 118px; height: 1px; padding-top: 277px; margin-left: 277px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: left;">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: none; white-space: normal; overflow-wrap: normal;">
+                                <span style="color: rgb(240, 240, 240); font-family: Helvetica; font-size: 11px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(24, 20, 29); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;">
+                                    - _windModel.type
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="277" y="289" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px">
+                    - _windModel.type
+                </text>
+            </switch>
+        </g>
+    </g>
+    <switch>
+        <g requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"/>
+        <a transform="translate(0,-5)" xlink:href="https://www.diagrams.net/doc/faq/svg-export-text-problems" target="_blank">
+            <text text-anchor="middle" font-size="10px" x="50%" y="100%">
+                Text is not SVG - cannot display
+            </text>
+        </a>
+    </switch>
+</svg>
