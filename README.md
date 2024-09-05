@@ -58,3 +58,10 @@ PyPrologue自体はColaboratory・ローカル環境問わず動きます (予�
    毎時間ステップ毎にappendしているので明らかに遅い.
    抜本的にコードを書き換えてリスト内包表記で計算するべき.  
    Organize関数とかもどこかに統合してよい気がする.
+
+## クラス図
+クラス図の書き方については[東大の資料](https://lecture.ecc.u-tokyo.ac.jp/hideo-t/references/uml/class-diagram/class-diagram.html)とかが参考になります.
+Draw.ioを使って書いているので，書き方は[Draw.io（diagrams.net）で作成したインフラ構成図をコードで管理する、GitHubで編集差分を確認する](https://dev.classmethod.jp/articles/create-infrastructure-diagrams-in-drawio-diactamsnet-manage-them-in-code-and-github/)などを参考にしてください.  
+正直クラス図書いててよくわかっていないので, クラス図書ける方適宜修正お願いします.
+
+![クラス図](./docs/class_diagram.drawio.svg)
