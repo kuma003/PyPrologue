@@ -85,21 +85,23 @@ class SimuResultSummary:
     maxNormalForceDuringRising : float = 0
 
 class SimuResultLogger:
-    '''ステップごとに結果を格納、出力を行うクラス'''
+    '''ステップごとに結果を格納、出力を行うクラス  
+    元実装がshared_ptrなのですべて静的変数 (クラス変数) としている'''
     _rocketSpec :RocketSpecification
     _map : MapData
     _result : SimuResultSummary
     
     def __init__(self, rocketSpec : RocketSpecification, map : MapData, windSpeed : float, windDirection : float):
-        self._rocketSpec = rocketSpec
-        self._map = map
-        self._result = SimuResultSummary()
-        self._result.windSpeed = windSpeed
-        self._result.windDirection = windDirection
+        # あくまでもクラス変数としてアクセス
+        SimuResultLogger._rocketSpec = rocketSpec
+        SimuResultLogger._map = map
+        SimuResultLogger._result = SimuResultSummary()
+        SimuResultLogger._result.windSpeed = windSpeed
+        SimuResultLogger._result.windDirection = windDirection
     
     @property
     def result(self):
-        return self._result
+        return SimuResultLogger._result
 
     @property
     def resultScatterFormat(self):
@@ -114,19 +116,19 @@ class SimuResultLogger:
         return result.bodyResults[[body_result.steps[-1].rocket_pos[2]  <= 0 for body_result in result.bodyResults]]
     
     def pushBody(self):
-        self._result.bodyResults = np.append(self._result.bodyResults, SimuResultBody())
-        self._result.bodyFinalPositions = np.append(self._result.bodyFinalPositions, BodyFinalPosition())
+        SimuResultLogger._result.bodyResults = np.append(SimuResultLogger._result.bodyResults, SimuResultBody())
+        SimuResultLogger._result.bodyFinalPositions = np.append(SimuResultLogger._result.bodyFinalPositions, BodyFinalPosition())
     
     def setLaunchClear(self, body : Body):
-        self._result.launchClearTime    = body.elapsedTime
-        self.result.launchClearVelocity = body.velocity
+        SimuResultLogger._result.launchClearTime    = body.elapsedTime
+        SimuResultLogger.result.launchClearVelocity = body.velocity
     
     def setBodyFinalPosition(self, bodyIndex : int, pos : np.ndarray):
-        self._result.bodyFinalPositions[bodyIndex] = BodyFinalPosition(latitude  = self._map.coordinate.latitudeAt(pos[1]), 
-                                                                       longitude = self._map.coordinate.longitudeAt(pos[0]))
+        SimuResultLogger._result.bodyFinalPositions[bodyIndex] = BodyFinalPosition(latitude  = SimuResultLogger._map.coordinate.latitudeAt(pos[1]), 
+                                                                       longitude = SimuResultLogger._map.coordinate.longitudeAt(pos[0]))
     
     def update(self, bodyIndex : int, rocket : Rocket, body : Body, windModel : WindModel, combusting : bool):
-        spec = self._rocketSpec.bodySpec(bodyIndex=bodyIndex)
+        spec = SimuResultLogger._rocketSpec.bodySpec(bodyIndex=bodyIndex)
         
         step = SimuResultStep(
             # General
@@ -164,30 +166,30 @@ class SimuResultLogger:
             body.aeroCoef.Cna,
             
             # position
-            self._map.coordinate.latitudeAt(body.pos[1]),
-            self._map.coordinate.longitudeAt(body.pos[0]),
+            SimuResultLogger._map.coordinate.latitudeAt(body.pos[1]),
+            SimuResultLogger._map.coordinate.longitudeAt(body.pos[0]),
             norm(body.pos[0:2]),
             
             # calculated
             100 * (body.aeroCoef.Cp - body.refLength) / spec.length,
             0.5 * windModel.density * norm(body.airspeed_b)**2
         )
-        self._result.bodyResults = np.append(self._result.bodyResults, step)
+        SimuResultLogger._result.bodyResults = np.append(SimuResultLogger._result.bodyResults, step)
         
         # update max
         rising : bool = body.velocity[2] > 0
-        if self._result.maxAltitude < body.pos[2]:
-            self._result.maxAltitude   = body.pos[2]
-            self.result.detectPeakTime = body.elapsedTime
-        if self._result.maxVelocity < norm(body.velocity):
-            self._result.maxVelocity = norm(body.velocity)
-        if self._result.maxAirspeed < norm(body.airspeed_b):
-            self._result.maxAirspeed = norm(body.airspeed_b)
-        if rising and self._result.maxNormalForceDuringRising < norm(body.airspeed_b[0:2]):
-            self._result.maxNormalForceDuringRising = norm(body.force_b[0:2])
+        if SimuResultLogger._result.maxAltitude < body.pos[2]:
+            SimuResultLogger._result.maxAltitude   = body.pos[2]
+            SimuResultLogger.result.detectPeakTime = body.elapsedTime
+        if SimuResultLogger._result.maxVelocity < norm(body.velocity):
+            SimuResultLogger._result.maxVelocity = norm(body.velocity)
+        if SimuResultLogger._result.maxAirspeed < norm(body.airspeed_b):
+            SimuResultLogger._result.maxAirspeed = norm(body.airspeed_b)
+        if rising and SimuResultLogger._result.maxNormalForceDuringRising < norm(body.airspeed_b[0:2]):
+            SimuResultLogger._result.maxNormalForceDuringRising = norm(body.force_b[0:2])
     
     def organize(self):
-        for bodyResult in self._result.bodyResults:
+        for bodyResult in SimuResultLogger._result.bodyResults:
             for step in bodyResult.steps:
                 if step.rocket_pos[2] < 0:
                     step.rocket_pos[2] = 0.0
