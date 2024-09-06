@@ -29,7 +29,7 @@ class Body:
     elapsedTime : float = 0.0  # [s]
     parachuteIndex : int = 0
     parachuteOpened : bool = False
-    waitforOpenPara : bool = False
+    waitForOpenPara : bool = False
     detectPeak : bool = False
     maxAltitude : float     = 0.0  # [m]
     maxAltitudeTime : float = 0.0  # [s]
@@ -40,8 +40,8 @@ class Body:
 
 @dataclass
 class Rocket:
-    # rocket1, rocket2, rocket3, ...
-    bodies : np.ndarray
+    # rocket1, rocket2+ , rocket3, ...
+    bodies : np.ndarray = field(default_factory=np.array([], dtype=Body))
     
     timeFromLaunch : float = 0.0  # [s]
     launchClear : bool = False

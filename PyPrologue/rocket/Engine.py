@@ -14,7 +14,7 @@ class ThrustData:
 
 class Engine:
     __thrustData : "np.ndarray"
-    __thrustMesurePressure = 101325  # [Pa]
+    __thrustMeasurePressure = 101325  # [Pa]
     __nozzleArea = 0.0  # [m^2]
     
     __exist : bool = False
@@ -55,10 +55,10 @@ class Engine:
         return thrust + (self.thrustMeasuredPressure - pressure) * self.__nozzleArea
     
     @property
-    def thrustMeasuredPressure(self): return self.__thrustMesurePressure
+    def thrustMeasuredPressure(self): return self.__thrustMeasurePressure
     
     @thrustMeasuredPressure.setter
-    def thrustMeasuredPressure(self, pressure) -> None: self.__thrustMesurePressure = pressure
+    def thrustMeasuredPressure(self, pressure) -> None: self.__thrustMeasurePressure = pressure
     
     @property
     def nozzleDiameter(self): return 2 * np.sqrt(self.__nozzleArea / np.pi)
