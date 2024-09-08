@@ -100,7 +100,7 @@ class WindModel :
     
     @property
     def gravity(self) -> float:
-        return self.gravity
+        return self._gravity
     
     def __getGravity(self) -> float:
         '''Formula from: https://ja.wikipedia.org/wiki/%E5%9C%B0%E7%90%83%E3%81%AE%E9%87%8D%E5%8A%9B#%E9%AB%98%E5%BA%A6'''
