@@ -27,17 +27,17 @@ class WindData:
     direction : float = 0
 
 class WindModel :
-    _windData = np.array([])
+    _windData = np.array([], dtype=WindData)
     _groundWindSpeed : float     = 0
     _groundWindDirection : float = 0
     _directionInterval : float   = 0
     _height : float              = 0
-    _geopotentialHeight          = 0
+    _geopotentialHeight : float  = 0
     _airDensity : float          = 0
     _gravity : float             = 0
     _pressure : float            = 0
     _temperature : float         = 0
-    _wind = np.array([])
+    _wind = np.array([0, 0, 0])
     
     def __init__(self, 
                   magneticDeclination : float, groundwindSpeed : float = 0, groundWindDirection : float = 0):
@@ -107,7 +107,7 @@ class WindModel :
         return Constant.G * (Constant.EarthRadius / (Constant.EarthRadius + self._height))**2
     
     @property
-    def wind(self):
+    def wind(self) -> np.ndarray:
         return self._wind
         
     @property
@@ -148,7 +148,7 @@ class WindModel :
     def __getAirDensity(self) -> float:
         return self.pressure / (self.temperature - Constant.AbsoluteZero) * Constant.GasConstant
     
-    def __getWindFromData(self):
+    def __getWindFromData(self) -> np.ndarray:
         idx = 0
         for data in self._windData:
             if data.height < self._height:
@@ -169,7 +169,7 @@ class WindModel :
         
         return -np.array([np.sin(rad), np.cos(rad), 0]) * windSpeed
     
-    def __getWindOriginalModel(self):
+    def __getWindOriginalModel(self) -> np.ndarray:
         if self._height <= 0:
             rad = np.radians(self._groundWindDirection)
             groundWind = -np.array([np.sin(rad), np.cos(rad), 0]) * self._groundWindSpeed
@@ -199,7 +199,7 @@ class WindModel :
         else:
             return -np.array([wind.geostrophicWind, 0, 0])
     
-    def __getWindOnlyPowerLaw(self):
+    def __getWindOnlyPowerLaw(self) -> np.ndarray:
         rad = np.radians(self._groundWindDirection)
         groundWind = -np.array([np.sin(rad), np.cos(rad), 0]) * self._groundWindSpeed
         if self._height <= 0:
@@ -240,7 +240,7 @@ class __Wind:
     EkmanLayerLimit     = 1000  # エクマン層 300 ~ 1000 [m]
 wind : __Wind = __Wind()
 
-def _applyPowerLaw(height: float, windSpeed: float | None = None, wind: np.ndarray | None = None,  ):
+def _applyPowerLaw(height: float, windSpeed: float | None = None, wind: np.ndarray | None = None,  ) -> np.ndarray:
     multiplier = pow(height / AppSetting.windModel.powerLawBaseAlatitude, 1.0 / AppSetting.windModel.powerConstant)
     
     if   (windSpeed is not None and wind is not None):
