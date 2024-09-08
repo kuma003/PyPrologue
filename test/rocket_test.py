@@ -39,4 +39,19 @@ with open(file) as f:
     
 print("------------------------------\n")
 
+file = "input/spec/spec_multi.json"
+print(f"filepath : {file}")
+with open(file) as f:
+    spec_dict = json.load(f)
+    rocket_spec = RocketSpecification(spec_dict)
+    
+    # ↓は参照渡し.メンバ変数のポインタも同じっぽい.
+    body_spec : BodySpecification = rocket_spec.bodySpec(0)
+    # ↓のように代入したときは新たにポインタが指定される模様.
+    # body_spec = BodySpecification()
+    body_spec.length = 100000
+
+    pprint(body_spec)
+    pprint(rocket_spec.bodySpec(0))
+
 # comment : pprintでも綺麗に出力できなかった...
