@@ -55,12 +55,9 @@ class BodySpecification:
     transitions : np.ndarray = field(default_factory=lambda: np.array([], dtype=Transition))
 
 class RocketSpecification:
-    _bodySpecs : np.ndarray
-    _existInfCd : bool
-    
     def __init__(self, specJson_dict : dict) -> None:
+        self._bodySpecs = np.array([], dtype=BodySpecification)
         self._existInfCd = False
-        self._bodySpecs = np.array([])
         
         isMultipleRocket : bool = self.isMultipleRocket(specJson_dict)
         self.__setBodySpecification(specJson_dict=specJson_dict, index=0) # 第一段階目
@@ -82,8 +79,8 @@ class RocketSpecification:
     def bodyCount(self) -> int:
         return len(self._bodySpecs)
     
-    def bodySpec(self, bodyIndex : int):
-        return self._bodySpecs[bodyIndex] if 0 < bodyIndex < self.bodyCount else None
+    def bodySpec(self, bodyIndex : int) -> BodySpecification:
+        return self._bodySpecs[bodyIndex] if 0 <= bodyIndex < self.bodyCount else None
     
     def __setBodySpecification(self, specJson_dict : dict, index : float) -> None:
         key : str = _bodyList[index]
@@ -149,7 +146,7 @@ class RocketSpecification:
         except:
             pass # 空実装
         
-        self.bodySpec = np.append(self.bodySpec, spec)
+        self._bodySpecs = np.append(self._bodySpecs, spec)
     
     def __setInfParachuteCd(self):
         # memo: 
@@ -157,7 +154,7 @@ class RocketSpecification:
         for spec in self._bodySpecs:
             if spec.parachutes[0].Cd == 0:
                 for _spec in reversed(self._bodySpecs):
-                    spec.parachutes[0].Cd = spec.parachutes[0].Cd + _spec.parachutes[0].Cd    
+                    spec.parachutes[0].Cd = spec.parachutes[0].Cd + _spec.parachutes[0].Cd
 
 def _calcPrachuteCd(massFinal : float, termianlVelocity : float):
     return massFinal * Constant.G / (0.5 * 1.25 * termianlVelocity ** 2)

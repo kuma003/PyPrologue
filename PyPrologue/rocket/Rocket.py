@@ -41,7 +41,7 @@ class Body:
 @dataclass
 class Rocket:
     # rocket1, rocket2+ , rocket3, ...
-    bodies : np.ndarray = field(default_factory=np.array([], dtype=Body))
+    bodies : np.ndarray = field(default_factory=lambda: np.array([], dtype=Body))
     
     timeFromLaunch : float = 0.0  # [s]
     launchClear : bool = False
