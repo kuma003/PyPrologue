@@ -11,8 +11,10 @@ from PyPrologue.app.CommandLine import *
 from PyPrologue.app.AppSetting import *
 
 from pprint import pprint
+import time
 
 QUESTION = False  # omit
+APP_SETTIGN = False
 
 if QUESTION: 
     print("------------------------------\n")
@@ -21,7 +23,10 @@ if QUESTION:
     Question("choose fruit", "apple", "banana", "others")
     InputIndex(2)
 
-print("------------------------------\n")
+if APP_SETTIGN:
+    print("------------------------------\n")
 
-pprint(AppSetting.__dict__)
+    pprint(AppSetting.__dict__)
 
+for idx in progress_bar(100):
+    time.sleep(0.01)
