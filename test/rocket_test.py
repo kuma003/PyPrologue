@@ -45,7 +45,7 @@ with open(file) as f:
     spec_dict = json.load(f)
     rocket_spec = RocketSpecification(spec_dict)
     
-    # ↓は参照渡し.メンバ変数のポインタも同じっぽい.
+    # ↓は参照渡し (正確には参照(id)の値渡し). メンバ変数のポインタも同じっぽい.
     body_spec : BodySpecification = rocket_spec.bodySpec(0)
     # ↓のように代入したときは新たにポインタが指定される模様.
     # body_spec = BodySpecification()
