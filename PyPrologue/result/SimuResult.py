@@ -41,7 +41,7 @@ class SimuResultStep:
     rocket_airspeed_b : np.ndarray = field(default_factory=lambda: np.ndarray([0,0,0]))
     rocket_force_b : np.ndarray = field(default_factory=lambda: np.ndarray([0,0,0]))
     Cnp : float = 0; Cny : float = 0
-    Cmqp : float = 0; Cnqy : float = 0
+    Cmqp : float = 0; Cmqy : float = 0
     Cp : float = 0
     Cd : float = 0
     Cna : float = 0
