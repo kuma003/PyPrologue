@@ -71,16 +71,31 @@ IzuSea : MapData = MapData(
     launchPointLongitude=__InitValue("izu_sea", "longitude") # type: ignore
 )
 
-def GetMap(type : MapType) -> MapData | None:
+def GetMap(key : str) -> MapData | None:
     global NoshiroLand, NoshiroSea, IzuLand, IzuSea
-    match type:
-        case MapType.NOSHIRO_LAND:
+    match key:
+        case "noshiro_land":
             return NoshiroLand
-        case MapType.NOSHIRO_SEA:
+        case "noshiro_sea":
             return NoshiroSea
-        case MapType.IZU_LAND:
+        case "izu_land":
             return IzuLand
-        case MapType.IZU_SEA:
+        case "izu_sea":
             return IzuSea
         case _: # case default:
             return None
+
+# MapTypeで受け付けるやつを作ったけど, こっちは不要だった...
+# def GetMap(type : MapType) -> MapData | None:
+#     global NoshiroLand, NoshiroSea, IzuLand, IzuSea
+#     match type:
+#         case MapType.NOSHIRO_LAND:
+#             return NoshiroLand
+#         case MapType.NOSHIRO_SEA:
+#             return NoshiroSea
+#         case MapType.IZU_LAND:
+#             return IzuLand
+#         case MapType.IZU_SEA:
+#             return IzuSea
+#         case _: # case default:
+#             return None
