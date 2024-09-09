@@ -30,7 +30,7 @@ class SimulatorFactory:
             # Create simulation instance
             if AppSetting.windModel.type == WindModelType.Real or AppSetting.windModel.type == WindModelType.NoWind or \
                 simulationSetting.simulationMode == DetailSimulator:
-                return DetailSimulator(specName=specName, specJson=specJson, setting=simulationSetting)
+                return DetailSimulator(specName=specName, specJson=specJson, setting=simulationSetting) # finallyの後にこれが実行されることに注意
             else:
                 raise RuntimeError("SimulatorFactory::Create(): Detected unhandled return path.")  # TODO : ScatterSimulatorの実装
         except Exception as e:
@@ -40,6 +40,7 @@ class SimulatorFactory:
                 file.close()  # file が存在すればデストラクタを呼んで正常にクロース
             except:
                 pass
+        return None
     
     @staticmethod
     def _setSpecFile() -> Path:
