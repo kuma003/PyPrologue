@@ -144,7 +144,7 @@ class Solver:
             if transitions[0].time <self._rocket.bodies[self._currentBodyIndex].elapsedTime:
                 self._rocket.bodies[self._currentBodyIndex].mass += transitions.mass
                 self._rocketSpec.bodySpec(self._currentBodyIndex).aeroCoeffStorage.setConstant(0, transitions[0].Cd, 0)   
-                self._rocketSpec.bodySpec(self._currentBodyIndex) = \
+                self._rocketSpec.bodySpec(self._currentBodyIndex).transitions = \
                     np.delete(self._rocketSpec.bodySpec(self._currentBodyIndex), 0)
         
     def _updateParachute(self):
