@@ -5,7 +5,6 @@ import json  # JSONファイル読み込み
 from pathlib import Path
 from enum import Enum  # 列挙体宣言用
 from dataclasses import dataclass
-from typing import Union ## 構造体宣言用
 from PyPrologue.app.CommandLine import *
 from PyPrologue.utils.JsonUtils import GetValueExc
 
