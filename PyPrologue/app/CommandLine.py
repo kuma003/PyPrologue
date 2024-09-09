@@ -18,8 +18,8 @@ def Question(question : str, *choices : str) -> None:
     for choice, i in zip(choices, range(len(choices))):
         print(i+1, ": ", choice, sep="")
 
-def InputIndex(size: int):
-    '''数字入力関数.
+def InputIndex(size: int) -> int:
+    '''インデックス入力関数.
     Args:
         size: 入力できる数の上限 (下限は0).
     '''
@@ -31,6 +31,19 @@ def InputIndex(size: int):
         except ValueError or EOFError:
             var = -1
     print("")
+    return var
+
+def InputFloat(prompt : str) -> float:
+    print(prompt)
+    var = -1
+    while not(isinstance(var, float)):
+        input_str = input("")
+        try:
+            var = float(input_str)
+        except ValueError or EOFError:
+            var = -1
+    print("")
+    return var
 
 def PrintInfo(type : PrintInfoType, *lines : str):
     '''文字列出力関数.
