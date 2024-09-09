@@ -5,6 +5,7 @@ from PyPrologue.dynamics.WindModel import *
 from PyPrologue.env.Environment import *
 from PyPrologue.env.Map import *
 from PyPrologue.result.SimuResult import *
+from PyPrologue.result.SimuResult import SimuResultLogger
 from PyPrologue.rocket.Rocket import *
 from PyPrologue.rocket.RocketSpec import *
 from PyPrologue.app.AppSetting import *
@@ -61,7 +62,7 @@ class Solver:
         
         self._rocket.bodies = np.array([Body() for _ in range(self._rocketSpec.bodyCount)])
     
-    def solve(self, windSpeed : float, windDirection : float):
+    def solve(self, windSpeed : float, windDirection : float) -> SimuResultLogger:
         # initialize wind model
         match AppSetting.windModel.type:
             case WindModelType.Real:
