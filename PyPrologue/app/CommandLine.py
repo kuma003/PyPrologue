@@ -33,10 +33,15 @@ def InputIndex(size: int) -> int:
     print("")
     return var
 
-def InputFloat(prompt : str) -> float:
+def InputFloat(prompt : str, only_positive : bool = True) -> float:
+    '''浮動小数入力関数.
+    Args:
+        prompt: 出力する文章.
+        only_positive: 正の数に限定するか (default: True)
+    '''
     print(prompt)
     var = -1
-    while not(isinstance(var, float)):
+    while not(isinstance(var, float) and (not only_positive or var > 0)):
         input_str = input("")
         try:
             var = float(input_str)
