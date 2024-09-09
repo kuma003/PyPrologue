@@ -72,7 +72,8 @@ class RocketSpecification:
         
         return
 
-    def isMultipleRocket(self, specJson_dict : dict):
+    @staticmethod
+    def isMultipleRocket(specJson_dict : dict):
         return _bodyList[1] in specJson_dict    
     
     @property
