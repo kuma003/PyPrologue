@@ -33,7 +33,7 @@ def InputIndex(size: int) -> int:
     print("")
     return var
 
-def InputFloat(prompt : str, only_positive : bool = True) -> float:
+def InputFloat(prompt : str, only_positive : bool = False) -> float:
     '''浮動小数入力関数.
     Args:
         prompt: 出力する文章.
