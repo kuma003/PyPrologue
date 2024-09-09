@@ -69,14 +69,14 @@ class ResultSaver:
         "max_normal_force_rising[N]"
     ]
     
-    @classmethod
+    @staticmethod
     def SaveScatter(dir : Path | str, result : np.ndarray[SimuResultSummary]) -> None:
         if not isinstance(dir, Path): dir = Path(dir)
         if not dir.is_dir: return # error
         
         ResultSaver._write_summary_scatter(dir, result)
     
-    @classmethod
+    @staticmethod
     def SaveDetail(dir : Path | str, result : SimuResultSummary) -> None:
         if not isinstance(dir, Path): dir = Path(dir)
         if not dir.is_dir: return # error
@@ -89,7 +89,7 @@ class ResultSaver:
             with open(path, mode="w") as f:
                 ResultSaver._write_body_result(f, result.bodyResults[i].steps)
     
-    @classmethod
+    @staticmethod
     def _write_body_result(f : TextIOWrapper, stepResult : np.ndarray[SimuResultStep]) -> None:
         # write header
         f.write(",".join(ResultSaver.headerDetail))
@@ -127,7 +127,7 @@ class ResultSaver:
             ]))  # 文字列型にキャストしてからカンマで結合
         f.write(line + "\n") # 書き込み
     
-    @classmethod
+    @staticmethod
     def _write_summary_header(f : TextIOWrapper, bodyCount : int) -> None:
         additional_header = \
             [f"{i}_final_latitude,{i}_final_longitude" for i in range(bodyCount)]
@@ -137,7 +137,7 @@ class ResultSaver:
         
         f.write("\n")
 
-    @classmethod
+    @staticmethod
     def _write_summary(f : TextIOWrapper, result : SimuResultSummary) -> None:
         cols = [
             result.windSpeed, result.windDirection,
@@ -152,7 +152,7 @@ class ResultSaver:
         
         f.write(",".join(map(str, cols)) + "\n")
     
-    @classmethod
+    @staticmethod
     def _write_summary_scatter(dir : Path, results : np.ndarray[SimuResultSummary]):
         with open(dir/"summary.csv", mode="w") as f:
             bodyCount = max([len(result.bodyFinalPositions) for result in results])
@@ -162,7 +162,7 @@ class ResultSaver:
             for result in results:
                 ResultSaver._write_summary(f, result, bodyCount)
     
-    @classmethod
+    @staticmethod
     def _write_summary_detail(dir : Path, result : SimuResultSummary):
         with open(file=dir/"summary.csv", mode="w") as f:
             ResultSaver._write_summary_header(f, len(result.bodyFinalPositions))
