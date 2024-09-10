@@ -121,7 +121,7 @@ class SimuResultLogger:
     
     def setLaunchClear(self, body : Body):
         SimuResultLogger._result.launchClearTime    = body.elapsedTime
-        SimuResultLogger.result.launchClearVelocity = body.velocity
+        SimuResultLogger._result.launchClearVelocity = body.velocity
     
     def setBodyFinalPosition(self, bodyIndex : int, pos : np.ndarray):
         SimuResultLogger._result.bodyFinalPositions[bodyIndex] = BodyFinalPosition(latitude  = SimuResultLogger._map.coordinate.latitudeAt(pos[1]), 
@@ -174,7 +174,7 @@ class SimuResultLogger:
             100 * (body.aeroCoef.Cp - body.refLength) / spec.length,
             0.5 * windModel.density * norm(body.airspeed_b)**2
         )
-        SimuResultLogger._result.bodyResults = np.append(SimuResultLogger._result.bodyResults, step)
+        SimuResultLogger._result.bodyResults[bodyIndex].steps = np.append(SimuResultLogger._result.bodyResults[bodyIndex].steps, step)
         
         # update max
         rising : bool = body.velocity[2] > 0

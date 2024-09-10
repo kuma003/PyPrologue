@@ -40,7 +40,7 @@ class WindModel :
     _wind = np.array([0, 0, 0])
     
     def __init__(self, 
-                  magneticDeclination : float, groundwindSpeed : float = 0, groundWindDirection : float = 0):
+                  magneticDeclination : float = 0, groundwindSpeed : float = 0, groundWindDirection : float = 0):
         '''
         コンストラクタ.
         
@@ -54,7 +54,7 @@ class WindModel :
             df = df.sort_values(by=df.columns[0]) # sort by geopotential_height
             for idx, windData in df.iterrows():
                 self._windData = np.append(self._windData, 
-                    WindData(height=windData[0], speed=windData[1], direction=windData[2]-magneticDeclination)) # type: ignore
+                    WindData(height=windData.iloc[0], speed=windData.iloc[1], direction=windData.iloc[2]-magneticDeclination)) # type: ignore
         else:
             self._groundWindSpeed = groundwindSpeed
             self._groundWindDirection = (groundWindDirection - magneticDeclination) % 360
@@ -116,7 +116,7 @@ class WindModel :
     
     def __getTemperature(self) -> float:
         '''Formula from: https://pigeon-poppo.com/standard-atmosphere/#i-3'''
-        geopotentialHeight = self.geopotentialHeight
+        geopotentialHeight = self._geopotentialHeight
         for thresold, layer in zip(_layerThresholds[1:], _layers):
             if (geopotentialHeight < thresold):
                 return layer.baseTemperature + layer.lapseRate * geopotentialHeight
@@ -132,11 +132,11 @@ class WindModel :
         '''Formula from: https://keisan.casio.jp/exec/system/1203469826  
         はじめに記載した参考文献はおそらく間違っている  
         https://pigeon-poppo.com/standard-atmosphere/#i-4'''
-        geopotentialHeight = self.geopotentialHeight
+        geopotentialHeight = self._geopotentialHeight
         for thresold, layer in zip(_layerThresholds[1:], _layers):
-            if (geopotentialHeight < thresold):
+            if geopotentialHeight < thresold:
                 k : float = layer.lapseRate * self._height
-                return layer.basePressure * pow(k / (self.temperature - Constant.AbsoluteZero - k), 5.257)
+                return layer.basePressure * (1  + k / (self.temperature - Constant.AbsoluteZero - k)) ** 5.257
             
         raise ValueError(f"Current height is {self._height} m. "
                 + "Wind model is not defined above 32000 m.")
@@ -146,7 +146,7 @@ class WindModel :
         return self._airDensity
     
     def __getAirDensity(self) -> float:
-        return self.pressure / (self.temperature - Constant.AbsoluteZero) * Constant.GasConstant
+        return self.pressure / ((self.temperature - Constant.AbsoluteZero) * Constant.GasConstant)
     
     def __getWindFromData(self) -> np.ndarray:
         idx = 0
@@ -241,7 +241,7 @@ class __Wind:
 wind : __Wind = __Wind()
 
 def _applyPowerLaw(height: float, windSpeed: float | None = None, wind: np.ndarray | None = None,  ) -> np.ndarray:
-    multiplier = pow(height / AppSetting.windModel.powerLawBaseAlatitude, 1.0 / AppSetting.windModel.powerConstant)
+    multiplier = (height / AppSetting.windModel.powerLawBaseAlatitude)  ** (1.0 / AppSetting.windModel.powerConstant)
     
     if   (windSpeed is not None and wind is not None):
         return (windSpeed * multiplier, wind * multiplier)

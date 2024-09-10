@@ -27,7 +27,7 @@ class MapData:
         launchPointLongitude: float):
         self.key = keyForJson
         self.type = mapType
-        self.coordinate = GeoCoordinate(launchPointLatitude, launchPointLongitude), # type: ignore
+        self.coordinate = GeoCoordinate(launchPointLatitude, launchPointLongitude)
         self.magneticDeclination = magneticDeclination
     
 
@@ -74,9 +74,9 @@ IzuSea : MapData = MapData(
 def GetMap(key : str) -> MapData | None:
     global NoshiroLand, NoshiroSea, IzuLand, IzuSea
     match key:
-        case "noshiro_land":
+        case "nosiro_land":
             return NoshiroLand
-        case "noshiro_sea":
+        case "nosiro_sea":
             return NoshiroSea
         case "izu_land":
             return IzuLand

@@ -96,4 +96,4 @@ def progress_bar(epoch):
         est = 0 if progress == 0 else elapsed_time / progress - elapsed_time
         print(f"\r{bar}     {idx + 1}/{epoch}, Est:{est:.2f} s.", end="")
         yield idx
-    print("")
+    print("\n")

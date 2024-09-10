@@ -53,7 +53,7 @@ class SimulatorBase(ABC):
         # Simulate
         start = time.time()
         
-        if not self._simulate(): return False # faild
+        if not self.simulate(): return False # faild
         
         elapsed_time = time.time() - start
         PrintInfo(PrintInfoType.Information,
@@ -63,7 +63,7 @@ class SimulatorBase(ABC):
         if output:
             PrintInfo(PrintInfoType.Information, "Saving result...")
             
-            self._saveResult()
+            self.saveResult()
             
             PrintInfo(PrintInfoType.Information, f"Result is saved in \"{self._outputdDirName}\"")
         
@@ -135,7 +135,7 @@ class SimulatorBase(ABC):
         # Get / Set place
         place = self._environment.place.lower()
         map = GetMap(place)
-        if map is None:
+        if map is not None:
             return GetMap(place)
         else:
             raise RuntimeError("This map is invalid.")
@@ -154,11 +154,11 @@ class DetailSimulator(SimulatorBase):
                             self._setting.detachTime,
                             self._environment,
                             self._rocketSpec)
-            
             resultLogger = solver.solve(self._setting.windSpeed, self._setting.windDirection)
             resultLogger.organize()
             self._result = resultLogger.result
-        except:
+        except Exception as e:
+            print(e)
             return False # どっかでエラー吐いたらここでキャッチする
         return True
     

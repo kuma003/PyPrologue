@@ -113,10 +113,10 @@ class ResultSaver:
                 step.rocket_mass, step.rocket_cgLength, step.rocket_iyz, 
                 step.rocket_ix, step.rocket_attackAngle,
                 step.rocket_pos[2], norm(step.rocket_velocity),
-                norm(step.rocket_airspeed_b), norm(step.rocket_airspeed_b) / step.rocket_mass,
+                norm(step.rocket_airspeed_b), norm(step.rocket_force_b) / step.rocket_mass,
                 step.rocket_force_b[0] / step.rocket_mass,
                 norm(step.rocket_force_b[1:]),
-                step.Cnp, step.Cnp, step.Cny, step.Cmqp, step.Cmqy,
+                step.Cnp, step.Cny, step.Cmqp, step.Cmqy,
                 step.Cp, step.Cd, step.Cna,
                 
                 # position
@@ -125,7 +125,7 @@ class ResultSaver:
                 # calculated
                 step.Fst, step.dynamicPressure
             ]))  # 文字列型にキャストしてからカンマで結合
-        f.write(line + "\n") # 書き込み
+            f.write(line + "\n") # 書き込み
     
     @staticmethod
     def _write_summary_header(f : TextIOWrapper, bodyCount : int) -> None:

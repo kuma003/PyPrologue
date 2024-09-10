@@ -84,7 +84,7 @@ class SimulatorFactory:
     def _setDetachTime() -> float:
         return InputFloat("Set Detach Time", only_positive=True)
     
-    @classmethod
+    @staticmethod
     def _setupSimulator(specJson : dict) -> SimulatorBase.SimulationSetting:
         setting = SimulatorBase.SimulationSetting()
 

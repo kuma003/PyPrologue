@@ -12,12 +12,13 @@ class ThrustData:
     time : float = 0.0
     thrust : float = 0.0
 
-class Engine:
-    __thrustData : "np.ndarray"
-    __thrustMeasurePressure = 101325  # [Pa]
-    __nozzleArea = 0.0  # [m^2]
-    
-    __exist : bool = False
+class Engine:   
+    def __init__(self):
+        self.__thrustData : np.ndarray[ThrustData] = np.array([], dtype=ThrustData)
+        self.__thrustMeasurePressure = 101325  # [Pa]
+        self.__nozzleArea = 0.0  # [m^2]
+        
+        self.__exist : bool = False
     
     def loadThrustData(self, filepath : Path):
         if not isinstance(filepath, Path): filepath = Path(filepath)
@@ -28,10 +29,10 @@ class Engine:
         df = pd.read_csv(filepath, header=None, sep=None, engine="python")
         df = df.sort_values(df.columns[0])
         
-        self.__thrustData = df.apply(lambda row : ThrustData(row[0], row[1]), axis=1) # type: ignore
+        self.__thrustData = np.array(df.apply(lambda row : ThrustData(row[0], row[1]), axis=1)) # ndarray型にキャスト
         
         if self.__thrustData[0].time != 0:
-            self.__thrustData = np.insert(self.__thrustData, 0, ThrustData(0, 0)) # type: ignore
+            self.__thrustData = np.insert(self.__thrustData, 0, ThrustData(0, 0))
         
         self.__exist = True
         return True        

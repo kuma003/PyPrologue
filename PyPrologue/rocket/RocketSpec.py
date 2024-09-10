@@ -146,8 +146,6 @@ class RocketSpecification:
                                                                                      Cd=GetValueExc(child, "Cd")))
         except:
             pass # 空実装
-        
-        self._bodySpecs = np.append(self._bodySpecs, spec)
     
     def __setInfParachuteCd(self):
         # memo: 

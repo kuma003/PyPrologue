@@ -16,14 +16,14 @@ class Body:
     pos : np.ndarray = 0             # position [m] (ENU coordinate)
     velocity : np.ndarray = 0        # velocity [m/s] (ground speed)
     omega_b : np.ndarray = 0        # angular velocity (roll,pitch,yaw)
-    quat : quaternion.quaternion = 0 # quaternion
+    quat : quaternion.quaternion = field(default_factory=lambda: np.quaternion(0, 0, 0, 0)) # quaternion
     
     # ========================delta not exists===================== #
     aeroCoef : AeroCoefficient = field(default_factory=AeroCoefficient)
     Cnp : float = 0; Cny : float = 0
     Cmqp : float = 0; Cmqy : float = 0
-    force_b : np.ndarray = field(default_factory=lambda: np.ndarray([0, 0, 0]))
-    moment_b : np.ndarray = field(default_factory=lambda: np.ndarray([0, 0, 0]))
+    force_b : np.ndarray = field(default_factory=lambda: np.array([0.0, 0.0, 0.0]))
+    moment_b : np.ndarray = field(default_factory=lambda: np.array([0.0, 0.0, 0.0]))
     
     # status
     elapsedTime : float = 0.0  # [s]
@@ -35,8 +35,9 @@ class Body:
     maxAltitudeTime : float = 0.0  # [s]
     
     # calculated
-    airspeed_b : np.ndarray = field(default_factory=lambda: np.ndarray([0, 0, 0]))
+    airspeed_b : np.ndarray = field(default_factory=lambda: np.array([0.0, 0.0, 0.0]))
     attackAngle : float = 0
+    
 
 @dataclass
 class Rocket:
