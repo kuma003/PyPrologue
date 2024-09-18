@@ -3,7 +3,7 @@
 単段 / 多段式ハイブリッドロケットの軌道シミュレーターです.
 
 ## 環境要件
-- Python : **ver.3.10以上**
+- Python : **ver.3.10以上**[^1]
   (match構文を用いるため)
 - numpy
 - numpy-quaternion
@@ -11,6 +11,7 @@
 - geopandas (予定)
 - plotly (予定)
 - kaleido (予定)
+[^1]: ver.3.12環境下ではライブラリの競合が発生したので, ver.3.10下を推奨します (2024/9 現在).
 
 Anaconda環境下では次を実行して，必要なライブラリをインストールしてください (参考 : [numpy-quaternion公式ドキュメント](https://quaternion.readthedocs.io/en/latest/)).
 ```
