@@ -134,12 +134,14 @@ class Solver:
         self._bodyDelta.pos         = np.array([0.0, 0.0, 0.0])
         self._bodyDelta.velocity    = np.array([0.0, 0.0, 0.0])
         self._bodyDelta.omega_b     = np.array([0.0, 0.0, 0.0])
-        yaw = np.radians(-(self._environment.railAzimuth - self._mapData.magneticDeclination) + 90)
+        yaw = np.radians(-(self._environment.railAzimuth - self._mapData.magneticDeclination) + 90) # 東 (x軸正の向き) からの角度 
         pitch = np.radians(self._environment.railElevation)
         roll = 0.0
+        print(yaw, pitch, roll)
         self._bodyDelta.quat        = \
-            quaternion.from_euler_angles(yaw, pitch, roll) # TODO : 計算式要チェック
-            
+            quaternion.from_euler_angles(yaw, -pitch, 0) # TODO : 計算式要チェック
+        print(self._bodyDelta.quat)
+        raise KeyboardInterrupt
         self._rocket.bodies[self._currentBodyIndex] = deepcopy(self._bodyDelta) # deepcopyしないとidを共有してしまい, deltaに代入するとbodyの方にも代入されてしまう
     
     def _update(self):
@@ -262,7 +264,7 @@ class Solver:
                 (THIS_BODY_SPEC.massFinal - THIS_BODY_SPEC.massInitial) / THIS_BODY_SPEC.engine.combustionTime
             self._bodyDelta.refLength = \
                 (THIS_BODY_SPEC.CGLengthFinal - THIS_BODY_SPEC.CGLengthInitial) / THIS_BODY_SPEC.engine.combustionTime
-            self._bodyDelta.ixz = \
+            self._bodyDelta.iyz = \
                 (THIS_BODY_SPEC.rollingMomentInertiaFinal - THIS_BODY_SPEC.rollingMomentInertiaInitial) / THIS_BODY_SPEC.engine.combustionTime
             self._bodyDelta.ix = (0.01 - 0.02) / THIS_BODY_SPEC.engine.combustionTime
         else:
@@ -309,7 +311,7 @@ class Solver:
     def _updateRocketDelta(self) -> None:
         THIS_BODY : Body = self._rocket.bodies[self._currentBodyIndex] # ミュータブルオブジェクトは参照渡し
         THIS_BODY_SPEC : BodySpecification = self._rocketSpec.bodySpec(self._currentBodyIndex)
-        
+        print(THIS_BODY.pos, THIS_BODY.velocity, THIS_BODY.force_b)
         if norm(THIS_BODY.pos) <= self._environment.railLength and THIS_BODY.velocity[2] >= 0.0: # launch
             if THIS_BODY.force_b[0] < 0:
                 self._bodyDelta.pos      = np.array([0.0, 0.0, 0.0])
@@ -321,7 +323,11 @@ class Solver:
                 THIS_BODY.force_b[2] = 0 # 機軸方向 (ローンチレール方向) に離床
                 self._bodyDelta.pos = THIS_BODY.velocity
                 
-                self._bodyDelta.velocity = (THIS_BODY.quat * quaternion.from_vector_part(THIS_BODY.force_b) * THIS_BODY.quat.inverse()).imag * THIS_BODY.mass
+                self._bodyDelta.velocity = (THIS_BODY.quat * quaternion.from_vector_part(THIS_BODY.force_b) * THIS_BODY.quat.inverse()).imag / THIS_BODY.mass
+                
+                print(quaternion.from_vector_part(THIS_BODY.force_b))
+                print(THIS_BODY.quat)
+                print(self._bodyDelta.velocity)
                 
                 self._bodyDelta.omega_b = np.array([0.0, 0.0, 0.0])
                 self._bodyDelta.quat    = np.quaternion(0, 0, 0, 0)
@@ -345,7 +351,7 @@ class Solver:
                 self._resultLogger.setLaunchClear(THIS_BODY)
             
             self._bodyDelta.pos      = THIS_BODY.velocity
-            self._bodyDelta.velocity = (THIS_BODY.quat * quaternion.from_vector_part(THIS_BODY.force_b) * THIS_BODY.quat.inverse()).imag * THIS_BODY.mass
+            self._bodyDelta.velocity = (THIS_BODY.quat * quaternion.from_vector_part(THIS_BODY.force_b) * THIS_BODY.quat.inverse()).imag / THIS_BODY.mass
             
             self._bodyDelta.omega_b = (THIS_BODY.moment_b / np.array([THIS_BODY.ix, THIS_BODY.iyz, THIS_BODY.iyz]))
             
