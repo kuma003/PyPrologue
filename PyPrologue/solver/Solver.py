@@ -108,6 +108,7 @@ class Solver:
                 self._applyDelta()
                 
                 if self._steps % AppSetting.result.stepSaveInterval == 0:
+                    # print(self._rocket.bodies[self._currentBodyIndex].pos[2])
                     self._organizeResult()
             
                 self._steps += 1
@@ -137,11 +138,10 @@ class Solver:
         yaw = np.radians(-(self._environment.railAzimuth - self._mapData.magneticDeclination) + 90) # 東 (x軸正の向き) からの角度 
         pitch = np.radians(self._environment.railElevation)
         roll = 0.0
-        print(yaw, pitch, roll)
-        self._bodyDelta.quat        = \
+        
+        self._bodyDelta.quat = \
             quaternion.from_euler_angles(yaw, -pitch, 0) # TODO : 計算式要チェック
-        print(self._bodyDelta.quat)
-        raise KeyboardInterrupt
+    
         self._rocket.bodies[self._currentBodyIndex] = deepcopy(self._bodyDelta) # deepcopyしないとidを共有してしまい, deltaに代入するとbodyの方にも代入されてしまう
     
     def _update(self):
@@ -311,7 +311,7 @@ class Solver:
     def _updateRocketDelta(self) -> None:
         THIS_BODY : Body = self._rocket.bodies[self._currentBodyIndex] # ミュータブルオブジェクトは参照渡し
         THIS_BODY_SPEC : BodySpecification = self._rocketSpec.bodySpec(self._currentBodyIndex)
-        print(THIS_BODY.pos, THIS_BODY.velocity, THIS_BODY.force_b)
+        # print(THIS_BODY.pos, THIS_BODY.velocity, THIS_BODY.force_b)
         if norm(THIS_BODY.pos) <= self._environment.railLength and THIS_BODY.velocity[2] >= 0.0: # launch
             if THIS_BODY.force_b[0] < 0:
                 self._bodyDelta.pos      = np.array([0.0, 0.0, 0.0])
@@ -325,9 +325,9 @@ class Solver:
                 
                 self._bodyDelta.velocity = (THIS_BODY.quat * quaternion.from_vector_part(THIS_BODY.force_b) * THIS_BODY.quat.inverse()).imag / THIS_BODY.mass
                 
-                print(quaternion.from_vector_part(THIS_BODY.force_b))
-                print(THIS_BODY.quat)
-                print(self._bodyDelta.velocity)
+                # print(quaternion.from_vector_part(THIS_BODY.force_b))
+                # print(THIS_BODY.quat)
+                # print(self._bodyDelta.velocity)
                 
                 self._bodyDelta.omega_b = np.array([0.0, 0.0, 0.0])
                 self._bodyDelta.quat    = np.quaternion(0, 0, 0, 0)
@@ -394,5 +394,4 @@ class Solver:
     def _nextRocket(self) -> None:
         '''Prepare the next rocket (multi rocket)'''
         self._currentBodyIndex += 1
-        self._resultLogger.pushBody()        
-        pass
+        self._resultLogger.pushBody()    

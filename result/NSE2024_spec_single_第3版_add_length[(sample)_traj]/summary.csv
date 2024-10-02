@@ -1,0 +1,2 @@
+wind_speed[m/s],wind_dir[deg],launch_clear_time[s],launch_clear_vel[m/s],max_altitude[m],max_altitude_time[s],max_velocity[m/s],max_airspeed[m/s],max_normal_force_rising[N],0_final_latitude,0_final_longitude
+0.0,0.0,0.3885999999999735,101.50858956685283,525.2124637909764,11.173099999987299,101.50858956685283,0,0,40.138330711655634,139.9849059293264

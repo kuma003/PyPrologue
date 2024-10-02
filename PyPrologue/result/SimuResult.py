@@ -132,47 +132,47 @@ class SimuResultLogger:
         
         step = SimuResultStep(
             # General
-            rocket.timeFromLaunch,
-            body.elapsedTime,
+            gen_elapsedTime=rocket.timeFromLaunch,
+            gen_timeFromLaunch=body.elapsedTime,
             
             # Boolean
-            rocket.launchClear,
-            combusting,
-            body.parachuteOpened,
+            launchClear=rocket.launchClear,
+            combusting=combusting,
+            parachuteOpened=body.parachuteOpened,
             
             # Air
-            windModel.density,
-            windModel.gravity,
-            windModel.pressure,
-            windModel.temperature,
-            windModel.wind,
+            air_density=windModel.density,
+            air_gravity=windModel.gravity,
+            air_pressure=windModel.pressure,
+            air_temperature=windModel.temperature,
+            air_wind=windModel.wind,
             
             # body
-            body.mass,
-            body.refLength,
-            body.iyz,
-            body.ix,
-            body.attackAngle,
-            body.pos,
-            body.velocity,
-            body.airspeed_b,
-            body.force_b,
-            body.Cnp,
-            body.Cny,
-            body.Cmqp,
-            body.Cmqy,
-            body.aeroCoef.Cp,
-            body.aeroCoef.Cd,
-            body.aeroCoef.Cna,
+            rocket_mass=body.mass,
+            rocket_cgLength=body.refLength,
+            rocket_iyz=body.iyz,
+            rocket_ix=body.ix,
+            rocket_attackAngle=body.attackAngle,
+            rocket_pos=body.pos,
+            rocket_velocity=body.velocity,
+            rocket_airspeed_b=body.airspeed_b,
+            rocket_force_b=body.force_b,
+            Cnp=body.Cnp,
+            Cny=body.Cny,
+            Cmqp=body.Cmqp,
+            Cmqy=body.Cmqy,
+            Cp=body.aeroCoef.Cp,
+            Cd=body.aeroCoef.Cd,
+            Cna=body.aeroCoef.Cna,
             
             # position
-            SimuResultLogger._map.coordinate.latitudeAt(body.pos[1]),
-            SimuResultLogger._map.coordinate.longitudeAt(body.pos[0]),
-            norm(body.pos[0:2]),
+            latitude=SimuResultLogger._map.coordinate.latitudeAt(body.pos[1]),
+            longitude=SimuResultLogger._map.coordinate.longitudeAt(body.pos[0]),
+            downrange=norm(body.pos[0:2]),
             
             # calculated
-            100 * (body.aeroCoef.Cp - body.refLength) / spec.length,
-            0.5 * windModel.density * norm(body.airspeed_b)**2
+            Fst=100 * (body.aeroCoef.Cp - body.refLength) / spec.length,
+            dynamicPressure=0.5 * windModel.density * norm(body.airspeed_b)**2
         )
         SimuResultLogger._result.bodyResults[bodyIndex].steps = np.append(SimuResultLogger._result.bodyResults[bodyIndex].steps, step)
         
@@ -180,13 +180,14 @@ class SimuResultLogger:
         rising : bool = body.velocity[2] > 0
         if SimuResultLogger._result.maxAltitude < body.pos[2]:
             SimuResultLogger._result.maxAltitude   = body.pos[2]
-            SimuResultLogger.result.detectPeakTime = body.elapsedTime
+            SimuResultLogger._result.detectPeakTime = body.elapsedTime
         if SimuResultLogger._result.maxVelocity < norm(body.velocity):
             SimuResultLogger._result.maxVelocity = norm(body.velocity)
         if SimuResultLogger._result.maxAirspeed < norm(body.airspeed_b):
             SimuResultLogger._result.maxAirspeed = norm(body.airspeed_b)
         if rising and SimuResultLogger._result.maxNormalForceDuringRising < norm(body.airspeed_b[0:2]):
             SimuResultLogger._result.maxNormalForceDuringRising = norm(body.force_b[0:2])
+    
     
     def organize(self):
         for bodyResult in SimuResultLogger._result.bodyResults:

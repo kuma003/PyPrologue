@@ -81,6 +81,8 @@ class ResultSaver:
         if not isinstance(dir, Path): dir = Path(dir)
         if not dir.is_dir: return # error
         
+        ResultSaver._write_summary_detail(dir, result)
+        
         # Save detail
         # write time-series data of all bodies
         bodyCount = len(result.bodyFinalPositions)
@@ -95,7 +97,6 @@ class ResultSaver:
         f.write(",".join(ResultSaver.headerDetail))
         
         f.write("\n")
-        
         for step, _ in zip(stepResult, progress_bar(len(stepResult))):
             step : SimuResultStep
             line = ",".join(map(str, [
@@ -139,6 +140,7 @@ class ResultSaver:
 
     @staticmethod
     def _write_summary(f : TextIOWrapper, result : SimuResultSummary) -> None:
+        
         cols = [
             result.windSpeed, result.windDirection,
             result.launchClearTime, norm(result.launchClearVelocity),
@@ -160,11 +162,11 @@ class ResultSaver:
             ResultSaver._write_summary_header(f, bodyCount)
             
             for result in results:
-                ResultSaver._write_summary(f, result, bodyCount)
+                ResultSaver._write_summary(f, result)
     
     @staticmethod
     def _write_summary_detail(dir : Path, result : SimuResultSummary):
         with open(file=dir/"summary.csv", mode="w") as f:
             ResultSaver._write_summary_header(f, len(result.bodyFinalPositions))
             
-            ResultSaver._write_summary(f, result, len(result.bodyFinalPositions))
+            ResultSaver._write_summary(f, result)

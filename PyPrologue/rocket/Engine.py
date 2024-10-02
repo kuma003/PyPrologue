@@ -30,7 +30,7 @@ class Engine:
         df = df.sort_values(df.columns[0])
         
         self.__thrustData = np.array(df.apply(lambda row : ThrustData(row[0], row[1]), axis=1)) # ndarray型にキャスト
-        
+                
         if self.__thrustData[0].time != 0:
             self.__thrustData = np.insert(self.__thrustData, 0, ThrustData(0, 0))
         
@@ -42,7 +42,7 @@ class Engine:
         
         idx = 0
         for data in self.__thrustData:
-            if data.time > time:
+            if data.time < time:
                 idx = idx+1
             else: break
         
