@@ -23,7 +23,7 @@
   "wind_model": {
     "power_constant": 6.0,
     "power_low_base_alt": 5.0,
-    "type": "real",
+    "type": "only_powerlaw",
     "realdata_filename": "sample.csv"
   },
 
