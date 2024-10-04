@@ -174,6 +174,7 @@ class SimuResultLogger:
             Fst=100 * (body.aeroCoef.Cp - body.refLength) / spec.length,
             dynamicPressure=0.5 * windModel.density * norm(body.airspeed_b)**2
         )
+        
         SimuResultLogger._result.bodyResults[bodyIndex].steps = np.append(SimuResultLogger._result.bodyResults[bodyIndex].steps, step)
         
         # update max
