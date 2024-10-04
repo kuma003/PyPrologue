@@ -29,7 +29,7 @@ class SimulatorFactory:
             
             # Create simulation instance
             if AppSetting.windModel.type == WindModelType.Real or AppSetting.windModel.type == WindModelType.NoWind or \
-                simulationSetting.simulationMode == DetailSimulator:
+                simulationSetting.simulationMode == SimulationMode.Detail:
                 return DetailSimulator(specName=specName, specJson=specJson, setting=simulationSetting) # finallyの後にこれが実行されることに注意
             else:
                 raise RuntimeError("SimulatorFactory::Create(): Detected unhandled return path.")  # TODO : ScatterSimulatorの実装
