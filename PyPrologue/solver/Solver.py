@@ -236,6 +236,8 @@ class Solver:
         '''空力特性更新関数'''
         THIS_BODY : Body = self._rocket.bodies[self._currentBodyIndex] # ミュータブルオブジェクトは参照渡し
         THIS_BODY_SPEC : BodySpecification = self._rocketSpec.bodySpec(self._currentBodyIndex)
+        airspeed = quaternion.from_vector_part(THIS_BODY.velocity - self._windModel.wind) # 地上座標系における風速 (Quaternion)
+        THIS_BODY.airspeed_b = (THIS_BODY.quat.conj() * airspeed * THIS_BODY.quat).imag 
         
         THIS_BODY.attackAngle = \
             np.arctan(norm(THIS_BODY.airspeed_b[1:]) / (THIS_BODY.airspeed_b[0] + 1e-16))

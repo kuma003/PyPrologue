@@ -99,7 +99,7 @@ class ResultSaver:
         f.write("\n")
         for step, _ in zip(stepResult, progress_bar(len(stepResult))):
             step : SimuResultStep
-            print(step.rocket_pos)
+            
             line = ",".join(map(str, [
                 # general
                 step.gen_timeFromLaunch, step.gen_elapsedTime,

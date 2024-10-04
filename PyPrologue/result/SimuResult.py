@@ -2,6 +2,7 @@
 シミュレーション結果に関するデータクラス
 '''
 
+from copy import deepcopy
 from PyPrologue.dynamics.WindModel import *
 from PyPrologue.env.Map import *
 from PyPrologue.rocket.Rocket import *
@@ -121,7 +122,7 @@ class SimuResultLogger:
     
     def setLaunchClear(self, body : Body):
         SimuResultLogger._result.launchClearTime    = body.elapsedTime
-        SimuResultLogger._result.launchClearVelocity = body.velocity
+        SimuResultLogger._result.launchClearVelocity = deepcopy(body.velocity)
     
     def setBodyFinalPosition(self, bodyIndex : int, pos : np.ndarray):
         SimuResultLogger._result.bodyFinalPositions[bodyIndex] = BodyFinalPosition(latitude  = SimuResultLogger._map.coordinate.latitudeAt(pos[1]), 
@@ -153,10 +154,10 @@ class SimuResultLogger:
             rocket_iyz=body.iyz,
             rocket_ix=body.ix,
             rocket_attackAngle=body.attackAngle,
-            rocket_pos=body.pos,
-            rocket_velocity=body.velocity,
-            rocket_airspeed_b=body.airspeed_b,
-            rocket_force_b=body.force_b,
+            rocket_pos=deepcopy(body.pos),
+            rocket_velocity=deepcopy(body.velocity),
+            rocket_airspeed_b=deepcopy(body.airspeed_b),
+            rocket_force_b=deepcopy(body.force_b),
             Cnp=body.Cnp,
             Cny=body.Cny,
             Cmqp=body.Cmqp,
@@ -186,8 +187,8 @@ class SimuResultLogger:
             SimuResultLogger._result.maxVelocity = norm(body.velocity)
         if SimuResultLogger._result.maxAirspeed < norm(body.airspeed_b):
             SimuResultLogger._result.maxAirspeed = norm(body.airspeed_b)
-        if rising and SimuResultLogger._result.maxNormalForceDuringRising < norm(body.airspeed_b[0:2]):
-            SimuResultLogger._result.maxNormalForceDuringRising = norm(body.force_b[0:2])
+        if rising and SimuResultLogger._result.maxNormalForceDuringRising < norm(body.force_b[1:]):
+            SimuResultLogger._result.maxNormalForceDuringRising = norm(body.force_b[1:])
     
     
     def organize(self):
