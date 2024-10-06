@@ -17,7 +17,7 @@ class GeoCoordinate:
         self.__latitude = latitude; self.__longitude = longitude
         
         self.__degPerLen_latitude  = 31.0 / 0.00027778
-        self.__degPerLen_longitude = np.degrees(6378150.0 * np.cos(np.radians(latitude)))
+        self.__degPerLen_longitude = np.radians(6378150.0 * np.cos(np.radians(latitude)))
     
     @property
     def latitude(self) -> float:

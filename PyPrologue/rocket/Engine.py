@@ -45,6 +45,7 @@ class Engine:
             if data.time < time:
                 idx = idx+1
             else: break
+        if idx==0: idx=1 # if time == 0
         
         time1 = self.__thrustData[idx-1].time
         time2 = self.__thrustData[idx].time
