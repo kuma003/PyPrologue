@@ -45,21 +45,17 @@ PyPrologue自体はColaboratory・ローカル環境問わず動きます (予�
    リファクタリング時にどちらかに統一したい.
 2. general  
    クラス変数とインスタンス変数の仕様を勘違いしていたため, 後で必ずインスタンス変数として再定義しなおす.
-3. Geocoordinate.py  
-   __degPerLen_latitude, __degPerLen_longitudeの計算が怪しい.
-4. Appsettings.py  
+3. Appsettings.py  
    ムリにSingletonにしなくてよかった気がする (可読性が低い). 
-5. RocketSpec.py  
+4. RocketSpec.py  
    終端速度とCd値の計算式が気になる.
-6. RocketSpec.py  
+5. RocketSpec.py  
    ```setInfParachuteCd```関数の意図がよくわからない. ChatGPTとも相談したけど抗力係数0のときに初期化したいこと以外の意図不明.  
    本当は自身よりも上のステージの抗力係数だけ足したかった? それならまだ分かるが逆順で足しているのは何故? 
-7. WindModel.py  
+6. WindModel.py  
    getWindFromData関数において, データの最大値よりも高い場合にインデックスをはみ出してしまう.
    外挿したかったが使っているnp.interpの性質上ムリそうなので, 取り合えず最後の値で頭打ちになるようにした.
-8. 同上  
-   realのときの挙動が怪しい. 使わないから優先度低いが後で**要デバッグ**.
-9.  SimuResult.py  
+7.  SimuResult.py  
    毎時間ステップ毎にappendしているので明らかに遅い.
    抜本的にコードを書き換えてリスト内包表記で計算するべき.  
    Organize関数とかもどこかに統合してよい気がする.
