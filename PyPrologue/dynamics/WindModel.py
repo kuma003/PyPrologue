@@ -51,19 +51,26 @@ class WindModel :
         '''
         if AppSetting.windModel.type == WindModelType.Real:
             df = pd.read_csv("input/wind/" + AppSetting.windModel.realdataFileName)
-            df = df.sort_values(by=df.columns[0]) # sort by geopotential_height
+            # df = df.sort_values(by=df.columns[0]) # sort by geopotentialheight
+            self._windData = np.array(WindData(0, 0, -magneticDeclination)) # MEMO : ほぼバグだけど一応
             for idx, windData in df.iterrows():
                 self._windData = np.append(self._windData, 
-                    WindData(height=windData.iloc[0], speed=windData.iloc[1], direction=windData.iloc[2]-magneticDeclination)) # type: ignore
+                    WindData(height=windData.iloc[0], speed=windData.iloc[1], direction=windData.iloc[2]-magneticDeclination))
         else:
             self._groundWindSpeed = groundwindSpeed
             self._groundWindDirection = (groundWindDirection - magneticDeclination) % 360
-            self._directionInterval = 270 - self._groundWindDirection if self._directionInterval > 45.0 else 270 - self._groundWindDirection + 360
+            self._directionInterval = 270 - self._groundWindDirection
+            if self._directionInterval <= -45.0:
+                self._directionInterval += 360
         
         
     
     def update(self, height : float):
-        '''
+        """_summary_
+
+        Args:
+            height (float): _description_
+        """        '''
             高さを更新
             Args:
                 height : 高度.
@@ -86,7 +93,7 @@ class WindModel :
             case WindModelType.OnlyPowerLaw:
                 self._wind = self.__getWindOnlyPowerLaw()
             case _: # NoWind or exception
-                m_wind = -np.array([0.0, 0.0, 0.0])
+                self._wind = -np.array([0.0, 0.0, 0.0])
 
     @property
     def geopotentialHeight(self) -> float:
@@ -154,16 +161,16 @@ class WindModel :
             if data.height < self._height:
                 idx = idx+1
             else: break
-        if idx == 0:
+        
+        if idx == 0:    
             return np.array([0, 0, 0])
+        
         if idx == len(self._windData) : idx = idx-1
         windData1 = self._windData[idx-1]
         windData2 = self._windData[idx]
         
-        windSpeed =\
-            np.interp(self._height, [windData1.height, windData2.height], [windData1.speed, windData2.speed])
-        direction =\
-            np.interp(self._height, [windData1.height, windData2.height], [windData1.direction, windData2.direction])
+        windSpeed = np.interp(self._height, [windData1.height, windData2.height], [windData1.speed, windData2.speed])
+        direction = np.interp(self._height, [windData1.height, windData2.height], [windData1.direction, windData2.direction])
         
         rad = np.radians(direction)
         
@@ -187,14 +194,14 @@ class WindModel :
             
             borderWindSpeed = _applyPowerLaw(self._height, self._groundWindSpeed)
             
-            k = (self._height - wind.surfaceLayerLimit) / (wind.surfaceLayerLimit + np.sqrt(2))
+            k = (self._height - wind.surfaceLayerLimit) / (wind.surfaceLayerLimit * np.sqrt(2))
             u = wind.geostrophicWind * (1 - np.exp(-k) * np.cos(k))
-            v = wind.geostrophicWind * (1 - np.exp(-k) * np.sin(k))
+            v = wind.geostrophicWind * np.exp(-k) * np.sin(k)
             
             descentRate = (wind.geostrophicWind - u) / wind.geostrophicWind
             
             return -np.array([np.sin(rad), np.cos(rad), 0]) * borderWindSpeed * descentRate\
-                    -np.array([u * np.sin(rad), v * np.cos(rad), v]) 
+                    -np.array([u * np.sin(rad), u * np.cos(rad), v]) 
 
         else:
             return -np.array([wind.geostrophicWind, 0, 0])
