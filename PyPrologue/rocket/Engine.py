@@ -35,6 +35,8 @@ class Engine:
         return True        
     
     def thrustAt(self, time : float, pressure : float):
+        if self.didCombustion(time=time): return 0.0
+        
         thrust = np.interp(time, self.__thrustData.time, self.__thrustData.thrust, left=0.0, right=0.0) # 外挿はせずに0. 内部はcだから早いはず...
         
         return thrust + (self.thrustMeasuredPressure - pressure) * self.__nozzleArea
