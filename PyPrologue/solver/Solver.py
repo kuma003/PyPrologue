@@ -84,41 +84,58 @@ class Solver:
             self._steps = 0
             
             self._initializeRocket()
-            
+            time1 = 0
+            time1_start = 0
+            time2 = 0
+            time2_start = 0
+            time3 = 0
+            time3_start = 0
+            time4 = 0
+            time4_start = 0
+            time5 = 0
+            time5_start = 0
+            time6 = 0
+            time6_start = 0
+            time7 = 0
+            time7_start = 0
             # loop until the rokcket lands
             while (self._rocket.bodies[self._currentBodyIndex].pos[2] > 0.0 or
                     self._rocket.bodies[self._currentBodyIndex].elapsedTime < 0.1):
+                time1_start = time.time()
                 self._update()
-                
+                time1 += time.time() - time1_start
                 if self._trajectoryMode == TrajectoryMode.Parachute:
                     self._updateParachute()
                 
                 if self._rocketType == RocketType.Multi and self._updateDetachment():
                     break
-                
+                time2_start = time.time()
                 self._updateAerodynamicParameters()
-                
-                
+                time2 += time.time() - time2_start
+                time3_start = time.time()
                 self._updateRopcketProperties()
-                
+                time3 += time.time() - time3_start
+                time4_start = time.time()
                 self._updateExternalForce()
-                
+                time4 += time.time() - time4_start
+                time5_start = time.time() 
                 self._updateRocketDelta()
-                
+                time5 += time.time() - time5_start
+                time6_start = time.time()
                 self._applyDelta()
-                
+                time6 += time.time() - time6_start
+                time7_start = time.time()
                 if self._steps % AppSetting.result.stepSaveInterval == 0:
-                    # print(self._rocket.bodies[self._currentBodyIndex].pos[2])
                     self._organizeResult()
             
                 self._steps += 1
-            
+                time7 += time.time() - time7_start
             # Save last if need
             if self._steps > 0 and (self._steps - 1) % AppSetting.result.stepSaveInterval != 0:
                 self._organizeResult()
             
             self._resultLogger.setBodyFinalPosition(self._currentBodyIndex, self._rocket.bodies[self._currentBodyIndex].pos)
-            
+            print([time1, time2, time3, time4, time5, time6, time7])
         return self._resultLogger
         
     def _initializeRocket(self) -> None:
