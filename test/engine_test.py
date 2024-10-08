@@ -12,8 +12,10 @@ import matplotlib.pyplot as plt
 
 engine = Engine()
 engine.loadThrustData( "I260_440cc_test0003_prologue.txt")
-print(engine.thrustAt(0.0, 101325))
-t = np.linspace(0, 3, 100)
+import pprint
+pprint.pprint(engine.__dict__)
+print(engine.thrustAt(2.0, 101325))
+t = np.linspace(0, 3, 500)
 
 thrust = [engine.thrustAt(time, 101325) for time in t]
 plt.plot(t, thrust)

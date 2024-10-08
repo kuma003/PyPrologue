@@ -9,12 +9,12 @@ from dataclasses import dataclass
 
 @dataclass
 class ThrustData:
-    time : float = 0.0
-    thrust : float = 0.0
+    time : np.ndarray[float] = np.array([])
+    thrust : np.ndarray[float] = np.array([])
 
 class Engine:   
     def __init__(self):
-        self.__thrustData : np.ndarray[ThrustData] = np.array([], dtype=ThrustData)
+        self.__thrustData : ThrustData = ThrustData()
         self.__thrustMeasurePressure = 101325  # [Pa]
         self.__nozzleArea = 0.0  # [m^2]
         
@@ -29,30 +29,13 @@ class Engine:
         df = pd.read_csv(filepath, header=None, sep=None, engine="python")
         df = df.sort_values(df.columns[0])
         
-        self.__thrustData = np.array(df.apply(lambda row : ThrustData(row[0], row[1]), axis=1)) # ndarray型にキャスト
+        self.__thrustData = ThrustData(df.iloc[:, 0].to_numpy(), df.iloc[:, 1].to_numpy())
                 
-        if self.__thrustData[0].time != 0:
-            self.__thrustData = np.insert(self.__thrustData, 0, ThrustData(0, 0))
-        
         self.__exist = True
         return True        
     
     def thrustAt(self, time : float, pressure : float):
-        if not self.isCombusting(time): return 0
-        
-        idx = 0
-        for data in self.__thrustData:
-            if data.time < time:
-                idx = idx+1
-            else: break
-        if idx==0: idx=1 # if time == 0
-        
-        time1 = self.__thrustData[idx-1].time
-        time2 = self.__thrustData[idx].time
-        thrust1 = self.__thrustData[idx-1].thrust
-        thrust2 = self.__thrustData[idx].thrust
-        
-        thrust = np.interp(time, [time1, time2], [thrust1, thrust2])
+        thrust = np.interp(time, self.__thrustData.time, self.__thrustData.thrust, left=0.0, right=0.0) # 外挿はせずに0. 内部はcだから早いはず...
         
         return thrust + (self.thrustMeasuredPressure - pressure) * self.__nozzleArea
     
@@ -71,7 +54,7 @@ class Engine:
     @property
     def combustionTime(self) -> float:
         '''燃焼時間'''
-        return self.__thrustData[-1].time if self.__exist else 0.0
+        return self.__thrustData.time[-1] if self.__exist else 0.0
     
     def isCombusting(self, time : float) -> bool:
         return time < self.combustionTime if self.__exist else False
