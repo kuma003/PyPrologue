@@ -16,7 +16,7 @@ import matplotlib.pyplot as plt
 
 from pprint import pprint
 
-alts = np.linspace(0, 10000, 100)
+alts = np.linspace(0, 500, 100)
 
 fig, axes = plt.subplots(2, 2, figsize=(12, 8))
 titles = ["real", "original", "only power law", "no wind"]
